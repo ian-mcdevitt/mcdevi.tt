@@ -10,7 +10,9 @@ exports = module.exports = function( ) {
     }
 
     function creatures(req, res, next) {
-        return res.send([{'name': 'Beholder'}]);
+        knex('creatures').select('*').then(function(results) {
+            return res.send(results);
+        });
     }
 
     return {

@@ -15,6 +15,7 @@ router.get(
 
 router.get(
     '/creatures',
+    password.protect,
     dndController.creatures
 );
 

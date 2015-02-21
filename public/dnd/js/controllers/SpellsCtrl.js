@@ -98,7 +98,6 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             return false;
         };
         $scope.matchesRitual = function(spell) {
-        	console.log(spell.name, $scope.ritual);
         	if($scope.ritual === '0' && spell.name.indexOf('Ritual') !== -1) return false;
         	if($scope.ritual === '1' && spell.name.indexOf('Ritual') === -1) return false;
         	return true;
