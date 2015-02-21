@@ -5,7 +5,7 @@ exports = module.exports = function( ) {
 
     function protect(req, res, next) {
         if(req.session.isAuthenticated) {
-            next();
+            return next();
         }
         knex('password').select('password').then(function(results) {
             if(results[0].password === req.query.password) {
