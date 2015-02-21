@@ -7,9 +7,15 @@ var express = require('express'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler'),
     morgan = require('morgan'),
-    dnd = require('./routes/dnd'),
     http = require('http'),
     path = require('path');
+
+var subdomains = [
+    {
+        name: 'dnd',
+        router: require('./routes/dnd')
+    }
+];
 
 var app = module.exports = express();
 
@@ -64,8 +70,9 @@ app.use(function(req, res, next) {
  * Routes
  */
 
-// D&D 5e Tools
-app.use('/dnd/', dnd);
+subdomains.forEach(function(subdomain) {
+    app.use('/' + subdomain.name + '/', subdomain.router);
+});
 
 // Serve domain-specific index (views/:subdomain/index.jade)
 app.get('/:subdomain/', function(req, res) {
