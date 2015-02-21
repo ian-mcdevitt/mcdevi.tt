@@ -64,6 +64,8 @@ app.use(function(req, res, next) {
  * Routes
  */
 
+// D&D 5e Tools
+app.use('/dnd/', dnd);
 
 // Serve domain-specific index (views/:subdomain/index.jade)
 app.get('/:subdomain/', function(req, res) {
@@ -73,16 +75,6 @@ app.get('/:subdomain/', function(req, res) {
 
 app.get('/:subdomain/public/*', function(req, res) {
     res.sendfile('public/' + req.params.subdomain + '/' + req.params[0].replace('../', ''));
-});
-
-// D&D 5e Tools
-app.get('/:subdomain/api/spells', dnd.spells);
-
-// redirect all others to a friendly 
-app.get('*', function(req, res) {
-    console.log(req.url);
-    // TODO: Serve a friendly list of subdomains
-    res.send(200);
 });
 
 
