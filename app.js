@@ -11,10 +11,7 @@ var express = require('express'),
     path = require('path');
 
 var subdomains = [
-    {
-        name: 'dnd',
-        router: require('./routes/dnd')
-    }
+    'dnd'
 ];
 
 var app = module.exports = express();
@@ -71,7 +68,7 @@ app.use(function(req, res, next) {
  */
 
 subdomains.forEach(function(subdomain) {
-    app.use('/' + subdomain.name + '/', subdomain.router);
+    app.use('/' + subdomain + '/', require('./routes/' + subdomain));
 });
 
 // Serve domain-specific index (views/:subdomain/index.jade)
