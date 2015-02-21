@@ -44,7 +44,6 @@ if (env === 'production') {
  * Homebrewed Subdomain Middleware
  */
 app.use(function(req, res, next) {
-    console.log(req.headers.host, req.url);
     // get host & protocol
     var host = req.headers.host,
         protocol = req.socket.encrypted ? 'https' : 'http';
@@ -56,7 +55,6 @@ app.use(function(req, res, next) {
     // test for subdomain
     var matches = host.match(new RegExp('(.*).mcdevi.(?:dev|tt)'));
     // subdomain
-    console.log(matches);
     if (matches && matches.length === 2) {
         req.url = '/' + matches[1] + req.url;
         next();
@@ -80,7 +78,7 @@ app.get('/:domain/partials/:name', function (req, res) {
 });
 
 // JSON API
-app.get('/api/name', api.name);
+app.get('/:domain/api/name', api.name);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', function(req, res) {

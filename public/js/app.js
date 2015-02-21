@@ -22,5 +22,5 @@ config(function ($routeProvider, $locationProvider) {
       redirectTo: '/view1'
     });
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(false);
 });
