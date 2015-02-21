@@ -2,53 +2,59 @@
 /* Controllers */
 angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope', '$sce', '$routeParams', '$http',
     function($scope, $sce, $routeParams, $http) {
-        var password = window.prompt('Please enter the password:');
-        $http.get('spells?password=' + password)
-        .success(function(spells) {
-            $scope.spells = spells;
-            for (var i = 0; i < $scope.spells.length; i++) {
-                if (typeof $scope.spells[i].description == 'string') {
-                    $scope.spells[i].description = $sce.trustAsHtml(nl2br($scope.spells[i].description));
-                }
-                if (typeof $scope.spells[i].classes == 'string') {
-                    $scope.spells[i].classes = $scope.spells[i].classes.split(', ');
-                }
+        var password;
+        $http.get('/password-check')
+        .success(function(result) {
+            if(result === 'false') {
+                password = window.prompt('Please enter the password:');
             }
-            $scope.levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            $scope.classes = [];
-            $scope.schools = [];
-            $scope.ritual = 2;
-            for (var i = 0; i < $scope.spells.length; i++) {
-                $scope.spells[i].classes.forEach(function(class_to_add) {
-                    for (var j = 0; j < $scope.classes.length; j++) {
-                        if ($scope.classes[j] == class_to_add) {
-                            return;
+            $http.get('/spells?password=' + password)
+            .success(function(spells) {
+                $scope.spells = spells;
+                for (var i = 0; i < $scope.spells.length; i++) {
+                    if (typeof $scope.spells[i].description == 'string') {
+                        $scope.spells[i].description = $sce.trustAsHtml(nl2br($scope.spells[i].description));
+                    }
+                    if (typeof $scope.spells[i].classes == 'string') {
+                        $scope.spells[i].classes = $scope.spells[i].classes.split(', ');
+                    }
+                }
+                $scope.levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+                $scope.classes = [];
+                $scope.schools = [];
+                $scope.ritual = 2;
+                for (var i = 0; i < $scope.spells.length; i++) {
+                    $scope.spells[i].classes.forEach(function(class_to_add) {
+                        for (var j = 0; j < $scope.classes.length; j++) {
+                            if ($scope.classes[j] == class_to_add) {
+                                return;
+                            }
+                        }
+                        $scope.classes.push(class_to_add);
+                    });
+                    var has_school = false;
+                    for (var j = 0; j < $scope.schools.length; j++) {
+                        if ($scope.schools[j] == $scope.spells[i].school) {
+                            has_school = true;
                         }
                     }
-                    $scope.classes.push(class_to_add);
-                });
-                var has_school = false;
-                for (var j = 0; j < $scope.schools.length; j++) {
-                    if ($scope.schools[j] == $scope.spells[i].school) {
-                        has_school = true;
+                    if (!has_school) {
+                        $scope.schools.push($scope.spells[i].school);
                     }
                 }
-                if (!has_school) {
-                    $scope.schools.push($scope.spells[i].school);
+                $scope.classes.sort();
+                $scope.schools.sort();
+                $scope.spellLevels = [];
+                $scope.spellClasses = [];
+                $scope.spellSchools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
+                $scope.spellsSelected = [];
+                if ($routeParams) {
+                    if ($routeParams.levels) $scope.spellLevels = $routeParams.levels.split(',');
+                    if ($routeParams.classes) $scope.spellClasses = $routeParams.classes.split(',');
+                    if ($routeParams.schools) $scope.spellSchools = $routeParams.schools.split(',');
+                    if ($routeParams.selected) $scope.spellsSelected = $routeParams.selected.split(',');
                 }
-            }
-            $scope.classes.sort();
-            $scope.schools.sort();
-            $scope.spellLevels = [];
-            $scope.spellClasses = [];
-            $scope.spellSchools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
-            $scope.spellsSelected = [];
-            if ($routeParams) {
-                if ($routeParams.levels) $scope.spellLevels = $routeParams.levels.split(',');
-                if ($routeParams.classes) $scope.spellClasses = $routeParams.classes.split(',');
-                if ($routeParams.schools) $scope.spellSchools = $routeParams.schools.split(',');
-                if ($routeParams.selected) $scope.spellsSelected = $routeParams.selected.split(',');
-            }
+            });
         });
         $scope.filterSpellSelect = function(spell) {
             return $scope.matchesLevels(spell) && $scope.matchesClasses(spell) && $scope.matchesSchools(spell) && $scope.matchesRitual(spell);

@@ -6,6 +6,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler'),
+    session = require('express-session'),
     morgan = require('morgan'),
     http = require('http'),
     path = require('path');
@@ -13,6 +14,7 @@ var express = require('express'),
 var subdomains = [
     'dnd'
 ];
+var password = require('./controllers/password')();
 
 var app = module.exports = express();
 
@@ -20,6 +22,9 @@ var app = module.exports = express();
 /**
  * Configuration
  */
+
+// Sessions
+app.use(session({ secret: 'OOGA BOOGA WHAT THE FUCK' }));
 
 // all environments
 app.set('port', process.env.PORT || 8080);
@@ -70,6 +75,8 @@ app.use(function(req, res, next) {
 subdomains.forEach(function(subdomain) {
     app.use('/' + subdomain + '/', require('./routes/' + subdomain));
 });
+
+app.get('/:subdomain/password-check', password.check);
 
 // Serve domain-specific index (views/:subdomain/index.jade)
 app.get('/:subdomain/', function(req, res) {

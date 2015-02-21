@@ -16,6 +16,6 @@ angular.module('myApp', [
     $routeProvider.when('/spells/:levels/:classes/:schools', {templateUrl: 'public/partials/spells.html', controller: 'spellsCtrl'});
     $routeProvider.when('/spells/:levels/:classes/:schools/:selected', {templateUrl: 'public/partials/spells.html', controller: 'spellsCtrl'});
     $routeProvider.when('/shapeshift/', {templateUrl: 'public/partials/shapeshift.html', controller: 'shapeshiftCtrl'});
-    $routeProvider.otherwise('/404');
+    $routeProvider.otherwise({templateUrl: 'public/partials/spells.html', controller: 'spellsCtrl'});
     $httpProvider.defaults.useXDomain = true;
 }]);
