@@ -1,15 +1,15 @@
 /*
  * Serve JSON to our AngularJS client
  */
-var dbconfig = require('../database.json');
-var knex = require('knex')(dbconfig[process.env.NODE_ENV || 'development'].knex);
 var express = require('express');
 var router = express.Router();
 
 var dndController = require('../controllers/dnd')();
+var password = require('../controllers/password')();
 
 router.get(
     '/spells',
+    password.protect,
     dndController.spells
 );
 
