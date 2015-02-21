@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script src='public/js/lib/angular/angular.js'></script>
+        <script src='public/js/app.js'></script>
+        <script src='public/js/services.js'></script>
+        <script src='public/js/controllers.js'></script>
+        <script src='public/js/filters.js'></script>
+        <script src='public/js/directives.js'></script>
+    </head>
+    <body>
+        <div ng-controller='AppCtrl'>
+            <h2>Hello Ian</h2>
+            <ul class="menu">
+                <li>
+                    <a href='view1'>view1</a>
+                </li>
+                <li>
+                    <a href='view2'>view2</a>
+                </li>
+            </ul>
+            <div ng-view>
+            </div>
+            <div>
+                Angular seed app: v1
+            </div>
+        </div>
+    </body>
+</html>

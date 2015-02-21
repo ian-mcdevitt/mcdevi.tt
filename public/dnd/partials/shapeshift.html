@@ -1,0 +1,187 @@
+<div style="min-width: 1400px">
+	<div id="filters" style="text-align: center; width: 260px; float: left; padding: 8px 10px 0px 8px" ng-show="filters && selected_creature === null">
+		<div class="shapeshift-input">
+			<span>Minimum CR:</span>
+			<select ng-model="min_cr" ng-options="cr.value as cr.name for cr in cr_options">
+			</select>
+		</div>
+		<div class="shapeshift-input">
+			<span>Maximum CR:</span>
+			<select ng-model="max_cr" ng-options="cr.value as cr.name for cr in cr_options">
+			</select>
+		</div>
+		<div class="shapeshift-input">
+			<span>Swim Speed:</span>
+			<select ng-model="swim">
+				<option value="0">No Swimmers</option>
+				<option value="1">Only Swimmers</option>
+				<option value="2">All</option>
+			</select>
+		</div>
+		<div class="shapeshift-input">
+			<span>Flight Speed:</span>
+			<select ng-model="flight">
+				<option value="0">No Fliers</option>
+				<option value="1">Only Fliers</option>
+				<option value="2">All</option>
+			</select>
+		</div>
+		<div class="shapeshift-input">
+			<span>Elemental:</span>
+			<select ng-model="elemental">
+				<option value="0">No Elementals</option>
+				<option value="1">Only Elementals</option>
+				<option value="2">All</option>
+			</select>
+		</div>
+		<div class="shapeshift-input" style="height: 87px">
+			<span>Creature Size:</span>
+			<select multiple ng-model="size" style="height: 77px">
+				<option value="0.25">Tiny</option>
+				<option value="0.5">Small</option>
+				<option value="1">Medium</option>
+				<option value="2">Large</option>
+				<option value="3">Huge</option>
+			</select>
+		</div>
+		<h2>Enemy Stats</h2>
+		<div class="shapeshift-input">
+			<span>AC:</span>
+			<input ng-model="enemy.ac">
+		</div>
+		<div class="shapeshift-input">
+			<span>Attack Mod:</span>
+			<input ng-model="enemy.attack">
+		</div>
+		<div class="shapeshift-input">
+			<span>Damage/Hit:</span>
+			<input ng-model="enemy.dph">
+		</div>
+	</div>
+	<div id="filter-toggle" ng-click="filters = !filters;" ng-show="selected_creature === null">
+		<img ng-src="/img/sidebar-grippy-{{filters ? 'hide' : 'show'}}.png">
+	</div>
+	<div style="width: calc(100%-300px); float: left; padding: 8px 0px 0px 0px;">
+		<div class="beast title" ng-show="selected_creature === null">
+			<div class="line">
+				<div ng-repeat="title in titles" ng-click="re_sort(title.field);" qtip data-at="bottom center" data-my="top center" data-content='{{title.tooltip}}'>
+	                {{title.title}}
+                	<span ng-show="{{title.tooltip}}" class="tooltip">?</span>
+					<span ng-show="sort == title.field && sort_dir == false">↑</span>
+					<span ng-show="sort == title.field && sort_dir == true">↓</span>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<div class="beast" ng-class="{odd: $odd}"
+			ng-repeat="beast in (beasts | filter: filterBeasts | orderBy:evaluateBeast:sort_dir)"
+			ng-show="selected_creature === null ? true : $index == selected_creature"
+			style="border-top-width: {{selected_creature === null ? 1 : 0}}px"
+			>
+			<div class="line" ng-show="selected_creature === null">
+				<div>{{beast.name}}</div>
+				<div>{{sizes[beast.size]}}</div>
+				<div>{{crs[beast.cr]}}</div>
+				<div>{{beast.ac}}</div>
+				<div>{{beast.hp}}</div>
+				<div>{{beast.survivability | number: 1}}</div>
+				<div>{{beast.speed}}ft.</div>
+				<div>{{beast.swim ? beast.swim + 'ft.' : ''}}</div>
+				<div>{{beast.flight ? beast.flight + 'ft.' : ''}}</div>
+				<div>{{beast.attacks}}</div>
+				<div>+{{beast.attack}}</div>
+				<div>{{beast.damage}}</div>
+				<div>{{beast.dpr | number:1}}</div>
+				<div style="width: 12px; cursor: pointer;" ng-click="select_creature($index);">&#x25BC;</div>
+			</div>
+			<stat-block ng-show="selected_creature !== null">
+					<div ng-show="selected_creature !== null" ng-click="deselect_creature()" style="margin-top: -3px; margin-bottom: 3px; float: right; cursor: pointer;">
+						<div style="float: left;">&#x25C0;</div>
+						<div style="float: left; margin: 1px 0px 0px 5px">Back</div>
+					</div>
+    			<creature-heading>
+      				<h1>{{beast.name}}</h1>
+      				<h2>{{sizes[beast.size]}} {{beast.type}}, {{beast.alignment}}</h2>
+    			</creature-heading>
+				<top-stats>
+      				<property-line>
+        				<h4>Armor Class</h4>
+        				<p>{{beast.armor_class}}</p>
+      				</property-line>
+      				<property-line>
+        				<h4>Hit Points</h4>
+        				<p>{{beast.hit_points}}</p>
+      				</property-line>
+      				<property-line>
+        				<h4>Speed</h4>
+        				<p>{{beast.speeds}}</p>
+      				</property-line>
+					<tapered-rule></tapered-rule>
+					    <table style="color: #7A200D;">
+						    <tr>
+						        <th>STR</th>
+						        <th>DEX</th>
+						        <th>CON</th>
+						        <th>INT</th>
+						        <th>WIS</th>
+						        <th>CHA</th>
+						    </tr>
+						    <tr>
+						        <td id="str">{{abilityText(beast.abilities[0])}}</td>
+						        <td id="dex">{{abilityText(beast.abilities[1])}}</td>
+						        <td id="con">{{abilityText(beast.abilities[2])}}</td>
+						        <td id="int">{{abilityText(beast.abilities[3])}}</td>
+						        <td id="wis">{{abilityText(beast.abilities[4])}}</td>
+						        <td id="cha">{{abilityText(beast.abilities[5])}}</td>
+						    </tr>
+					    </table>
+					<tapered-rule></tapered-rule>
+				    <property-line ng-show="beast.dmg_vuln.length > 0">
+				        <h4>Damage Vulnerabilities</h4>
+				        <p>{{beast.dmg_vuln.join('; ')}}</p>
+				    </property-line>
+				    <property-line ng-show="beast.dmg_resist.length > 0">
+				        <h4>Damage Resistances</h4>
+				        <p>{{beast.dmg_resist.join('; ')}}</p>
+				    </property-line>
+				    <property-line ng-show="beast.dmg_immune.length > 0">
+				        <h4>Damage Immunities</h4>
+				        <p>{{beast.dmg_immune.join('; ')}}</p>
+				    </property-line>
+				    <property-line ng-show="beast.cond_immune.length > 0">
+				        <h4>Condition Immunities</h4>
+				        <p>{{beast.cond_immune.join('; ')}}</p>
+				    </property-line>
+				    <property-line ng-show="beast.skills.length > 0">
+				        <h4>Skills</h4>
+				        <p>{{beast.skills.join(', ')}}</p>
+				    </property-line>
+				    <property-line>
+				        <h4>Senses</h4>
+				        <p>{{beast.senses.concat('passive Perception ' + (10 + beast.perception_prof + abilityModifier(beast.abilities[4]))).join(', ')}}</p>
+				    </property-line>
+				    <property-line>
+				        <h4>Languages</h4>
+				        <p ng-show="beast.languages.length > 0">{{beast.languages.join(', ')}}</p>
+				        <p ng-show="beast.languages.length === 0">–</p>
+				    </property-line>
+				    <property-line>
+				        <h4>Challenge</h4>
+				        <p>{{beast.challenge}}</p>
+				    </property-line>
+				</top-stats>
+    			<property-block ng-repeat="property in beast.properties">
+      				<h4>{{property.name}}.</h4>
+      				<p ng-bind-html="property.text"></p>
+    			</property-block>
+				<h3 ng-show="beast.actions.length > 0">Actions</h3>
+				<property-block ng-repeat="action in beast.actions" ng-show="beast.actions.length > 0">
+	      			<h4>{{action.name}}.</h4>
+      				<p ng-bind-html="action.text"></p>
+    			</property-block>
+    			</div>
+			</stat-block>
+			<hr>
+		</div>
+	</div>
+</div>

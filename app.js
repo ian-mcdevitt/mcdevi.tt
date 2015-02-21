@@ -7,7 +7,7 @@ var express = require('express'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler'),
     morgan = require('morgan'),
-    api = require('./routes/api'),
+    dnd = require('./routes/dnd'),
     http = require('http'),
     path = require('path');
 
@@ -48,10 +48,6 @@ app.use(function(req, res, next) {
     var host = req.headers.host,
         protocol = req.socket.encrypted ? 'https' : 'http';
 
-    if (/^www/.test(host)) {
-        return res.redirect(protocol + '://' + host.replace(/^www\./, '') + req.url);
-    }
-
     // test for subdomain
     var matches = host.match(new RegExp('(.*).mcdevi.(?:dev|tt)'));
     // subdomain
@@ -68,20 +64,23 @@ app.use(function(req, res, next) {
  * Routes
  */
 
-// Serve domain-specific index (views/:domain/index.jade)
-app.get('/:domain/', function(req, res){
-    res.render(req.params.domain + '/index');
-});
-// Serve domain-specific partials
-app.get('/:domain/partials/:name', function (req, res) {
-    res.render(req.params.domain + '/partials/' + req.params.name);
+
+// Serve domain-specific index (views/:subdomain/index.jade)
+app.get('/:subdomain/', function(req, res) {
+    // TODO: Check to see if index actually exists, next() if not
+    res.sendfile('index/' + req.params.subdomain.replace('.', '') + '.html');
 });
 
-// JSON API
-app.get('/:domain/api/name', api.name);
+app.get('/:subdomain/public/*', function(req, res) {
+    res.sendfile('public/' + req.params.subdomain + '/' + req.params[0].replace('../', ''));
+});
 
-// redirect all others to the index (HTML5 history)
+// D&D 5e Tools
+app.get('/:subdomain/api/spells', dnd.spells);
+
+// redirect all others to a friendly 
 app.get('*', function(req, res) {
+    console.log(req.url);
     // TODO: Serve a friendly list of subdomains
     res.send(200);
 });
