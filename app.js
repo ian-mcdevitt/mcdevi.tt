@@ -27,7 +27,7 @@ var app = module.exports = express();
 app.use(session({ secret: 'OOGA BOOGA WHAT THE FUCK', maxAge: 1000 * 60 * 60 * 24 * 30 }));
 
 // all environments
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(morgan('dev'));
