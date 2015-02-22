@@ -64,6 +64,7 @@ a {
     box-shadow: 0px 10px 20px #444;
     font-size: 16px;
     line-height: 32px;
+    overflow: hidden;
 }
 .detailbox:nth-child(even) {
     background-color: #FA7B0C;
@@ -74,4 +75,21 @@ a {
     background-color: white;
     opacity: 0.85;
     margin-top: 50px;
+}
+.detailbox:before,
+.detailbox:after {
+  content:"";
+  display:table;
+}
+.detailbox:after {
+  clear:both;
+}
+.detailbox {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+.detailbox .left {
+  float: right;
+  width: calc(100% - 232px);
+  padding-right: 30px;
+  padding-top: 30px;
 }
