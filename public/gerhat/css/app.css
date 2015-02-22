@@ -16,10 +16,9 @@ div.menubox {
 }
 div.menubox > div {
     position: absolute;
-    bottom: -11px;
+    bottom: -7px;
     width: 100%;
     text-align: center;
-    background: url('../../public/img/beach.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-clip: initial;
@@ -28,16 +27,13 @@ div.menubox > div {
     -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
 }
 div.menubox > div > a {
+    text-transform: uppercase;
     display: inline;
     padding: 0px 5px;
-    color: white;
-}
-div.menubox > div > .heart {
-    font-size: 20px;
     color: white;
 }
 .homebox {
