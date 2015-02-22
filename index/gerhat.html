@@ -2,12 +2,15 @@
 <html ng-app="myApp">
     <head
         <meta charset="utf-8">
-        <title>Gerhat & McDevitt Wedding</title>
+        <title>Gerhat &amp; McDevitt Wedding</title>
         <link rel="stylesheet" href="public/css/app.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div class="menubox">
             <ul class="menu">
+                <li><a href="#/">Home</a></li>
                 <li><a href="#/details">Details</a></li>
                 <li><a href="#/rsvp">RSVP</a></li>
                 <li><a href="#/contributions">Contributions</a></li>
@@ -18,13 +21,12 @@
         <script src="public/js/angular-route.js"></script>
         <script src="public/js/angular-sanitize.js"></script>
         <script src="public/js/app.js"></script>
-        <script src="public/js/services.js"></script>
-                <script src="public/js/controllers/SpellsCtrl.js"></script>
-                <script src="public/js/controllers/ShapeshiftCtrl.js"></script>
+            <script src="public/js/controllers/contributionsCtrl.js"></script>
+            <script src="public/js/controllers/detailsCtrl.js"></script>
+            <script src="public/js/controllers/homeCtrl.js"></script>
+            <script src="public/js/controllers/rsvpCtrl.js"></script>
         <script src="public/js/directives.js"></script>
         <script src="public/js/filters.js"></script>
         <script src="public/js/jquery-2.1.0.min.js"></script>
-        <script src="public/js/jquery.qtip.min.js"></script>
-        <script src="public/js/FileSaver.js"></script>
     </body>
 </html>
