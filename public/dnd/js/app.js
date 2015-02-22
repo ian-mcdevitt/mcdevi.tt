@@ -6,7 +6,6 @@ angular.module('myApp', [
     'dnd5e.controllers.spells',
     'dnd5e.controllers.shapeshift',
     'dnd5e.directives',
-    'dnd5e.services',
     'dnd5e.filters'
 ])
 .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
