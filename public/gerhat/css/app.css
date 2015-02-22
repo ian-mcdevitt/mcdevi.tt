@@ -51,3 +51,25 @@ a {
     color: black;
     text-decoration: none;
 }
+.detailbox {
+    width: 650px;
+    background-color: aqua;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 20px 35px;
+    margin-bottom: 50px;
+    opacity: 0.95;
+    box-shadow: 0px 10px 20px #444;
+    font-size: 16px;
+    line-height: 32px;
+}
+.detailbox:nth-child(even) {
+    background-color: #FA7B0C;
+}
+.detailbox:nth-child(1) {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    background-color: white;
+    opacity: 0.85;
+    margin-top: 50px;
+}
