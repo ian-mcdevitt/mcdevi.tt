@@ -5,7 +5,7 @@ body {
 }
 body * {
     font-family: 'Roboto', sans-serif;
-    font-size: 12px;
+    color: #222;
 }
 div.menubox {
     height: 40px;
@@ -32,7 +32,7 @@ div.menubox {
     line-height: 30px;
 }
 .homebox {
-    width: 650px;
+    width: 550px;
     background-color: white;
     margin: 0 auto;
     border-radius: 10px;
@@ -42,17 +42,19 @@ div.menubox {
 }
 .homebox:nth-child(1) p {
     font-family: 'Dancing Script', cursive;
-    font-size: 3em;
+    font-size: 2.2em;
 }
 .homebox:nth-child(2) p {
-    font-size: 1.2em;
+    font-size: 1em;
+    line-height: 1.6em;
 }
 a {
-    color: black;
+    color: #222;
     text-decoration: none;
 }
 .detailbox {
-    width: 650px;
+    width: 60%;
+    max-width: 1000px;
     background-color: aqua;
     margin: 0 auto;
     border-radius: 10px;
