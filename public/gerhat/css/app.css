@@ -12,24 +12,32 @@ div.menubox {
     margin-bottom: 1px;
     text-align: center;
     background-color: white;
+    position: relative;
 }
-.menu {
-    height: 30px;
-    margin: 0 auto;
-    padding: 5px;
-    list-style: none;
+div.menubox > div {
+    position: absolute;
+    bottom: -11px;
+    width: 100%;
+    text-align: center;
+    background: url('../../public/img/beach.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-clip: initial;
+    background-size: 100% 150%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    font-size: 40px;
+    font-weight: bold;
 }
-.menu > li {
-    display: inline;
-    padding: 10px;
+div.menubox > div > a {
+    padding: 0px 5px;
+    color: white;
 }
-.menu > li:nth-child(1):before {
-    content: "";
-    padding: 0;
-}
-.menu > li > a {
+div.menubox > div > .heart {
     font-size: 20px;
-    line-height: 30px;
+    color: white;
 }
 .homebox {
     width: 550px;
