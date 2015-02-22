@@ -32,6 +32,7 @@ div.menubox > div {
     font-weight: bold;
 }
 div.menubox > div > a {
+    display: inline;
     padding: 0px 5px;
     color: white;
 }
