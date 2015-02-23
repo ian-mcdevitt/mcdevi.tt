@@ -49,10 +49,10 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 $scope.spellSchools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
                 $scope.spellsSelected = [];
                 if ($routeParams) {
-                    if ($routeParams.levels) $scope.spellLevels = $routeParams.levels.split(',');
-                    if ($routeParams.classes) $scope.spellClasses = $routeParams.classes.split(',');
-                    if ($routeParams.schools) $scope.spellSchools = $routeParams.schools.split(',');
-                    if ($routeParams.selected) $scope.spellsSelected = $routeParams.selected.split(',');
+                    if ($routeParams.levels && $routeParams.levels !== 'a') $scope.spellLevels = $routeParams.levels.split(',');
+                    if ($routeParams.classes && $routeParams.classes !== 'b') $scope.spellClasses = $routeParams.classes.split(',');
+                    if ($routeParams.schools && $routeParams.schools !== 'c') $scope.spellSchools = $routeParams.schools.split(',');
+                    if ($routeParams.selected && $routeParams.selected !== 'd') $scope.spellsSelected = $routeParams.selected.split(',');
                 }
             });
         });
