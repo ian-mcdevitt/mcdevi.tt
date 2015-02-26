@@ -8,7 +8,6 @@ angular.module('wedding.controllers.rsvp', []).controller('rsvpCtrl', ['$scope',
             .success(function(results) {
                 if(results.length === 0) $location.path('/');
                 $scope.invitation = results;
-                console.log($scope.invitation);
             })
             .error(function() {
                 $location.path('/');
