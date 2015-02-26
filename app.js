@@ -12,7 +12,8 @@ var express = require('express'),
     path = require('path');
 
 var subdomains = [
-    'dnd'
+    'dnd',
+    'gerhat'
 ];
 var password = require('./controllers/password')();
 

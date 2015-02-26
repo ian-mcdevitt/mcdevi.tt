@@ -71,6 +71,9 @@ a {
     line-height: 32px;
     overflow: hidden;
 }
+.detailbox.whitebox {
+    background-color: white !important;
+}
 .detailbox:nth-child(even) {
     background-color: #FA7B0C;
 }
@@ -85,16 +88,23 @@ a {
 .detailbox:after {
   content:"";
   display:table;
-}
-.detailbox:after {
   clear:both;
-}
-.detailbox {
-  zoom:1; /* For IE 6/7 (trigger hasLayout) */
 }
 .detailbox .left {
   float: right;
   width: calc(100% - 232px);
   padding-right: 30px;
   padding-top: 30px;
+}
+table.rsvp {
+    width: 100%;
+}
+.rsvp th, .rsvp td {
+    text-align: center;
+}
+.rsvp th:first-child, .rsvp td:first-child {
+    text-align: left;
+}
+.tooltip {
+    cursor: help;
 }

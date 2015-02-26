@@ -1,4 +1,4 @@
-var dbconfig = require('../database.json');
+var dbconfig = require('../db/dnd/database.json');
 var knex = require('knex')(dbconfig[process.env.NODE_ENV || 'development'].knex);
 
 exports = module.exports = function( ) {

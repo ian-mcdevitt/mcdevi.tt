@@ -1,3 +1,45 @@
-<div style="padding-top: 10px;">
-	RSVP
+<style>
+    html {
+        background: url('public/img/beach3.jpg') no-repeat fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    div.menubox > div {
+        background-image: url('/public/img/beach3.jpg');
+    }
+</style>
+<div style="width: 100%; text-align: center;" ng-show="invitation">
+    <div class="detailbox">
+        {{invitation.name}}
+    </div>
+    <div class="detailbox whitebox">
+        <table class="rsvp">
+            <tr>
+                <th>Guest Name</th>
+                <th>Attending</th>
+                <th>Entree</th>
+            </tr>
+            <tr ng-repeat="guest in invitation.guests">
+                <td>{{guest.name}}</td>
+                <td>
+                    <label><input type="radio" ng-model="guest.attending" value="true">&nbsp;Yes</label>
+                    &nbsp;
+                    <label><input type="radio" ng-model="guest.attending" value="false">&nbsp;No</label>
+                </td>
+                <td>
+                    <label><input type="radio" ng-model="guest.entree" value="chicken">&nbsp;Chicken Francaise</label>
+                    &nbsp;
+                    <label><input type="radio" ng-model="guest.entree" value="beef">&nbsp;Petite Filet Mignon</label>
+                    &nbsp;
+                    <label>
+                        <span class="tooltip" title="Scallops, shrimp, flounder, stuffed clam, and crab cake">
+                            <input type="radio" ng-model="guest.entree" value="seafood">&nbsp;Broiled Fisherman's Wharf Platter<sup>?</sup>
+                        </span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

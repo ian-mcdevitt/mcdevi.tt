@@ -4,19 +4,11 @@
 var express = require('express');
 var router = express.Router();
 
-var dndController = require('../controllers/dnd')();
-var password = require('../controllers/password')();
-
-router.post(
-    '/rsvp',
-    dndController.spells
-);
+var weddingController = require('../controllers/gerhat')();
 
 router.get(
-    '/creatures',
-    password.protect,
-    dndController.creatures
+    '/rsvp/:password',
+    weddingController.showrsvp
 );
-
 
 module.exports = router;
