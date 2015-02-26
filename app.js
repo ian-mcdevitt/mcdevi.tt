@@ -15,7 +15,6 @@ var subdomains = [
     'dnd',
     'gerhat'
 ];
-var password = require('./controllers/password')();
 
 var app = module.exports = express();
 
@@ -74,15 +73,13 @@ app.use(function(req, res, next) {
  */
 
 subdomains.forEach(function(subdomain) {
-    app.use('/' + subdomain + '/', require('./routes/' + subdomain));
+    app.use('/' + subdomain + '/', require('./subdomains/' + subdomain + '/routes'));
 });
-
-app.get('/:subdomain/password-check', password.check);
 
 // Serve domain-specific index (views/:subdomain/index.jade)
 app.get('/:subdomain/', function(req, res) {
     // TODO: Check to see if index actually exists, next() if not
-    res.sendfile('index/' + req.params.subdomain.replace('.', '') + '.html');
+    res.sendfile('subdomains/' + req.params.subdomain.replace('.', '') + '/index.html');
 });
 
 app.get('/:subdomain/public/vendor/*', function(req, res) {

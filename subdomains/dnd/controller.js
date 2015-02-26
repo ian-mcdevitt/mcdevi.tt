@@ -1,9 +1,21 @@
-var dbconfig = require('../db/dnd/database.json');
+var dbconfig = require('./database.json');
 var knex = require('knex')(dbconfig[process.env.NODE_ENV || 'development'].knex);
 
 exports = module.exports = function( ) {
 
-    function protect(req, res, next) {
+    function spells(req, res, next) {
+        knex('spells').select('*').then(function(results) {
+            return res.send(results);
+        });
+    }
+
+    function creatures(req, res, next) {
+        knex('creatures').select('*').then(function(results) {
+            return res.send(results);
+        });
+    }
+
+    function requirePassword(req, res, next) {
         if(req.session.isAuthenticated) {
             return next();
         }
@@ -17,13 +29,15 @@ exports = module.exports = function( ) {
         });
     }
 
-    function check(req, res, next) {
+    function checkSession(req, res, next) {
         res.send(!!req.session.isAuthenticated);
     }
 
     return {
-        protect: protect,
-        check: check
+        spells: spells,
+        creatures: creatures,
+        requirePassword: requirePassword,
+        checkSession: checkSession
     };
 };
 

@@ -4,7 +4,7 @@
 
 angular.module('dnd5e.controllers.shapeshift', ['ngSanitize']).controller('shapeshiftCtrl', ['$scope', '$sce', '$routeParams', '$http', function($scope, $sce, $routeParams, $http) {
     var password;
-    $http.get('/password-check')
+    $http.get('/check-session')
     .success(function(result) {
         if(result === false) {
             password = window.prompt('Please enter the password:');

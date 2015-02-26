@@ -4,20 +4,23 @@
 var express = require('express');
 var router = express.Router();
 
-var dndController = require('../controllers/dnd')();
-var password = require('../controllers/password')();
+var dndController = require('./controller')();
 
 router.get(
     '/spells',
-    password.protect,
+    dndController.requirePassword,
     dndController.spells
 );
 
 router.get(
     '/creatures',
-    password.protect,
+    dndController.requirePassword,
     dndController.creatures
 );
 
+router.get(
+    '/check-session',
+    dndController.checkSession
+);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-var dbconfig = require('../db/gerhat/database.json');
+var dbconfig = require('./database.json');
 var knex = require('knex')(dbconfig[process.env.NODE_ENV || 'development'].knex);
 
 exports = module.exports = function( ) {

@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 
-var weddingController = require('../controllers/gerhat')();
+var weddingController = require('./controller')();
 
 router.get(
     '/rsvp/:password',
