@@ -5,7 +5,8 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
         var password;
         $http.get('/password-check')
         .success(function(result) {
-            if(result === 'false') {
+            console.log(result);
+            if(result === false) {
                 password = window.prompt('Please enter the password:');
             }
             $http.get('/spells?password=' + password)

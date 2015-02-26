@@ -6,7 +6,7 @@ angular.module('dnd5e.controllers.shapeshift', ['ngSanitize']).controller('shape
     var password;
     $http.get('/password-check')
     .success(function(result) {
-        if(result === 'false') {
+        if(result === false) {
             password = window.prompt('Please enter the password:');
         }
         $http.get('/creatures?password=' + password)
