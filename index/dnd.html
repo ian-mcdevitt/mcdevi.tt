@@ -5,11 +5,11 @@
         <title>D&amp;D 5e Tools</title>
         <link rel="stylesheet" href="public/css/app.css"/>
         <link rel="stylesheet" href="public/css/jquery.qtip.css" />
-        <link rel="import" href="public/src/top-stats.html" />
-        <link rel="import" href="public/src/creature-heading.html" />
-        <link rel="import" href="public/src/property-block.html" />
-        <link rel="import" href="public/src/property-line.html" />
-        <link rel="import" href="public/src/stat-block.html" />
+        <link rel="import" href="public/vendor/partials/top-stats.html" />
+        <link rel="import" href="public/vendor/partials/creature-heading.html" />
+        <link rel="import" href="public/vendor/partials/property-block.html" />
+        <link rel="import" href="public/vendor/partials/property-line.html" />
+        <link rel="import" href="public/vendor/partials/stat-block.html" />
     </head>
     <body>
         <div class="menubox">
@@ -20,15 +20,14 @@
         </div>
         <div ng-view></div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-        <script src="public/js/angular-route.js"></script>
-        <script src="public/js/angular-sanitize.js"></script>
+        <script src="public/vendor/js/angular-route.js"></script>
+        <script src="public/vendor/js/angular-sanitize.js"></script>
+        <script src="public/vendor/js/jquery-2.1.0.min.js"></script>
+        <script src="public/vendor/js/jquery.qtip.min.js"></script>
         <script src="public/js/app.js"></script>
             <script src="public/js/controllers/SpellsCtrl.js"></script>
             <script src="public/js/controllers/ShapeshiftCtrl.js"></script>
         <script src="public/js/directives.js"></script>
         <script src="public/js/filters.js"></script>
-        <script src="public/js/jquery-2.1.0.min.js"></script>
-        <script src="public/js/jquery.qtip.min.js"></script>
-        <script src="public/js/FileSaver.js"></script>
     </body>
 </html>

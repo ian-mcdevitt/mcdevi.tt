@@ -85,8 +85,8 @@ app.get('/:subdomain/', function(req, res) {
     res.sendfile('index/' + req.params.subdomain.replace('.', '') + '.html');
 });
 
-app.get('/:subdomain/public/common/*', function(req, res) {
-    res.sendfile('public/common/' + req.params[0].replace('../', ''));
+app.get('/:subdomain/public/vendor/*', function(req, res) {
+    res.sendfile('public/vendor/' + req.params[0].replace('../', ''));
 });
 
 app.get('/:subdomain/public/*', function(req, res) {
