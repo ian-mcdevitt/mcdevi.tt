@@ -1,46 +1,51 @@
 <div style="padding-top: 10px;">
-	<div class="no-print spell" style="text-align: center">
-		<select multiple size="20" ng-model="spellLevels">
-			<option value="0">Cantrip</option>
-			<option value="1">1st-Level</option>
-			<option value="2">2nd-Level</option>
-			<option value="3">3rd-Level</option>
-			<option value="4">4th-Level</option>
-			<option value="5">5th-Level</option>
-			<option value="6">6th-Level</option>
-			<option value="7">7th-Level</option>
-			<option value="8">8th-Level</option>
-			<option value="9">9th-Level</option>
-		</select>
-		<select multiple size="20" ng-model="spellClasses" ng-options="class as class for class in classes | orderBy">
-		</select>
-		<select multiple size="20" ng-model="spellSchools">
-			<option value="Abjuration">Abjuration</option>
-			<option value="Conjuration">Conjuration</option>
-			<option value="Divination">Divination</option>
-			<option value="Enchantment">Enchantment</option>
-			<option value="Evocation">Evocation</option>
-			<option value="Illusion">Illusion</option>
-			<option value="Necromancy">Necromancy</option>
-			<option value="Transmutation">Transmutation</option>
-		</select>
-		<select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.name as spell.name group by (spell.level + ordinalEnding(spell.level) + ' Level') for spell in (spells | filter:filterSpellSelect)">
-		</select>
-		<div>
-			<label><input type="radio" ng-model="ritual" value="0"> No rituals</label>
-			<label><input type="radio" ng-model="ritual" value="1"> Only rituals</label>
-			<label><input type="radio" ng-model="ritual" value="2"> All</label>
-			<button ng-click="generateUrl()">Generate URL:</button><input ng-model="url">
-		</div>
-	</div>
+    <div class="no-print spell" style="text-align: center">
+        <select multiple size="20" ng-model="spellLevels">
+            <option value="0">Cantrip</option>
+            <option value="1">1st-Level</option>
+            <option value="2">2nd-Level</option>
+            <option value="3">3rd-Level</option>
+            <option value="4">4th-Level</option>
+            <option value="5">5th-Level</option>
+            <option value="6">6th-Level</option>
+            <option value="7">7th-Level</option>
+            <option value="8">8th-Level</option>
+            <option value="9">9th-Level</option>
+        </select>
+        <select multiple size="20" ng-model="spellClasses" ng-options="class as class for class in classes | orderBy">
+        </select>
+        <select multiple size="20" ng-model="spellSchools">
+            <option value="Abjuration">Abjuration</option>
+            <option value="Conjuration">Conjuration</option>
+            <option value="Divination">Divination</option>
+            <option value="Enchantment">Enchantment</option>
+            <option value="Evocation">Evocation</option>
+            <option value="Illusion">Illusion</option>
+            <option value="Necromancy">Necromancy</option>
+            <option value="Transmutation">Transmutation</option>
+        </select>
+        <select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.name as spell.name group by (spell.level + ordinalEnding(spell.level) + ' Level') for spell in (spells | filter:filterSpellSelect)">
+        </select>
+        <div style="padding: 5px 17px 0px 15px">
+            <div style="float: left">
+                <label><input type="radio" ng-model="ritual" value="0"> No Rituals</label>
+                <label><input type="radio" ng-model="ritual" value="1"> Only Rituals</label>
+                <label><input type="radio" ng-model="ritual" value="2"> All Spells</label>
+            </div>
+            <div style="float: right">
+                Permalink: <input ng-model="generateUrl()" style="width: 200px;">
+            </div>
+            <hr>
+        </div>
+    </div>
     <div ng-repeat="spell in spells | orderBy:['level','name']" ng-show="filterSpell(spell)" class="spell">
-		<h1>{{spell.name}}</h1>
-		<div class="bold italic">{{spell.level}}{{ordinalEnding(spell.level)}} Level {{spell.school}}</div>
-		<div><span class="bold">Action:</span> {{spell.action}}</div>
-		<div><span class="bold">Range:</span> {{spell.range}}</div>
-		<div><span class="bold">Components:</span> {{spell.components}}</div>
-		<div><span class="bold">Duration:</span> {{spell.duration}}</div>
-		<div><span class="bold">Classes:</span> {{spell.classes.sort().join(', ')}}</div>
-		<div ng-bind-html="spell.description"></div>
-	</div>
+        <h1>{{spell.name}}</h1>
+        <div class="bold italic">{{spell.level}}{{ordinalEnding(spell.level)}} Level {{spell.school}}</div>
+        <div><span class="bold">Action:</span> {{spell.action}}</div>
+        <div><span class="bold">Range:</span> {{spell.range}}</div>
+        <div><span class="bold">Components:</span> {{spell.components}}</div>
+        <div><span class="bold">Duration:</span> {{spell.duration}}</div>
+        <div><span class="bold">Classes:</span> {{spell.classes.sort().join(', ')}}</div>
+        <div ng-bind-html="spell.description"></div>
+    </div>
 </div>

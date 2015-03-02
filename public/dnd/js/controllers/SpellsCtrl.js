@@ -125,7 +125,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             }
         };
         $scope.generateUrl = function() {
-            $scope.url = 'http://dnd.mcdevi.tt/#/spells/' + ($scope.spellLevels.length > 0 ? $scope.spellLevels.join(',') : 'a') + '/' + ($scope.spellClasses.length > 0 ? $scope.spellClasses.join(',') : 'b') + '/' + ($scope.spellSchools.length > 0 ? $scope.spellSchools.join(',') : 'c') + '/' + ($scope.spellsSelected.length > 0 ? $scope.spellsSelected.join(',') : 'd') + '/';
+            return 'http://dnd.mcdevi.tt/#/spells/' + ($scope.spellLevels.length > 0 ? $scope.spellLevels.join(',') : 'a') + '/' + ($scope.spellClasses.length > 0 ? $scope.spellClasses.join(',') : 'b') + '/' + ($scope.spellSchools.length > 0 ? $scope.spellSchools.join(',') : 'c') + '/' + ($scope.spellsSelected.length > 0 ? $scope.spellsSelected.join(',') : 'd') + '/';
         };
 
         function nl2br(input) {
