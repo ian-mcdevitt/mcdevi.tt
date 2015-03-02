@@ -29,7 +29,6 @@ app.use(session({ secret: 'OOGA BOOGA WHAT THE FUCK', cookie: {maxAge: 1000 * 60
 // all environments
 app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
