@@ -53,6 +53,8 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                     if ($routeParams.classes && $routeParams.classes !== 'b') $scope.spellClasses = $routeParams.classes.split(',');
                     if ($routeParams.schools && $routeParams.schools !== 'c') $scope.spellSchools = $routeParams.schools.split(',');
                     if ($routeParams.selected && $routeParams.selected !== 'd') $scope.spellsSelected = $routeParams.selected.split(',');
+                    if ($routeParams.title && $routeParams.title !== 'e') $scope.pageTitle = $routeParams.title;
+                    $scope.setTitle();
                 }
             });
         });
@@ -125,7 +127,16 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             }
         };
         $scope.generateUrl = function() {
-            return 'http://dnd.mcdevi.tt/#/spells/' + ($scope.spellLevels.length > 0 ? $scope.spellLevels.join(',') : 'a') + '/' + ($scope.spellClasses.length > 0 ? $scope.spellClasses.join(',') : 'b') + '/' + ($scope.spellSchools.length > 0 ? $scope.spellSchools.join(',') : 'c') + '/' + ($scope.spellsSelected.length > 0 ? $scope.spellsSelected.join(',') : 'd') + '/';
+            return 'http://dnd.mcdevi.tt/#/spells/' +
+                ($scope.spellLevels && $scope.spellLevels.length > 0 ? $scope.spellLevels.join(',') : 'a') + '/' +
+                ($scope.spellClasses && $scope.spellClasses.length > 0 ? $scope.spellClasses.join(',') : 'b') + '/' +
+                ($scope.spellScholls && $scope.spellSchools.length > 0 ? $scope.spellSchools.join(',') : 'c') + '/' +
+                ($scope.spellsSelected && $scope.spellsSelected.length > 0 ? $scope.spellsSelected.join(',') : 'd') + '/' +
+                ($scope.pageTitle ? $scope.pageTitle : 'e');
+        };
+
+        $scope.setTitle = function() {
+            document.title = $scope.pageTitle || 'D&D 5e Tools';
         };
 
         function nl2br(input) {

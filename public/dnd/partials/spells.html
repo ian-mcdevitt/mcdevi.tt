@@ -26,14 +26,15 @@
         </select>
         <select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.name as spell.name group by (spell.level + ordinalEnding(spell.level) + ' Level') for spell in (spells | filter:filterSpellSelect)">
         </select>
-        <div style="padding: 5px 17px 0px 15px">
+        <div style="padding: 5px 17px 0px 15px; text-align: center">
             <div style="float: left">
                 <label><input type="radio" ng-model="ritual" value="0"> No Rituals</label>
                 <label><input type="radio" ng-model="ritual" value="1"> Only Rituals</label>
                 <label><input type="radio" ng-model="ritual" value="2"> All Spells</label>
             </div>
+            Title: <input type="text" ng-model="pageTitle" ng-change="setTitle()">
             <div style="float: right">
-                Permalink: <input ng-model="generateUrl()" style="width: 200px;">
+                Permalink: <input ng-value="generateUrl()" style="width: 200px;">
             </div>
             <hr>
         </div>
