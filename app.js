@@ -89,6 +89,9 @@ app.get('/:subdomain/public/*', function(req, res) {
     res.sendfile('public/' + req.params.subdomain + '/' + req.params[0].replace('../', ''));
 });
 
+app.get('/:subdomain/*', function(req, res) {
+    res.redirect((req.socket.encrypted ? 'https' : 'http') + '://' + req.headers.host);
+});
 
 /**
  * Start Server
