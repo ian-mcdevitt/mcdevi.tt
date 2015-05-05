@@ -11,7 +11,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path');
 
-var subdomains = [
+var apis = [
     'dnd',
     'gerhat'
 ];
@@ -48,7 +48,7 @@ if (env === 'production') {
 
 
 /**
- * Homebrewed Subdomain Middleware
+ * Homebrewed Subdomain API Middleware
  */
 app.use(function(req, res, next) {
     // get host & protocol
@@ -71,25 +71,25 @@ app.use(function(req, res, next) {
  * Routes
  */
 
-subdomains.forEach(function(subdomain) {
-    app.use('/' + subdomain + '/', require('./subdomains/' + subdomain + '/routes'));
+apis.forEach(function(api) {
+    app.use('/' + api + '/', require('./apis/' + api + '/routes'));
 });
 
-// Serve domain-specific index (views/:subdomain/index.jade)
-app.get('/:subdomain/', function(req, res) {
+// Serve domain-specific index (views/:api/index.jade)
+app.get('/:api/', function(req, res) {
     // TODO: Check to see if index actually exists, next() if not
-    res.sendfile('subdomains/' + req.params.subdomain.replace('.', '') + '/index.html');
+    res.sendfile('public/' + req.params.api.replace('.', '') + '/index.html');
 });
 
-app.get('/:subdomain/public/vendor/*', function(req, res) {
+app.get('/:api/public/vendor/*', function(req, res) {
     res.sendfile('public/vendor/' + req.params[0].replace('../', ''));
 });
 
-app.get('/:subdomain/public/*', function(req, res) {
-    res.sendfile('public/' + req.params.subdomain + '/' + req.params[0].replace('../', ''));
+app.get('/:api/public/*', function(req, res) {
+    res.sendfile('public/' + req.params.api + '/' + req.params[0].replace('../', ''));
 });
 
-app.get('/:subdomain/*', function(req, res) {
+app.get('/:api/*', function(req, res) {
     res.redirect((req.socket.encrypted ? 'https' : 'http') + '://' + req.headers.host);
 });
 
