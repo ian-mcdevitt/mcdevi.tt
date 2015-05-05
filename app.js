@@ -13,7 +13,8 @@ var express = require('express'),
 
 var apis = [
     'dnd',
-    'gerhat'
+    'gerhat',
+    'chelsea'
 ];
 
 var app = module.exports = express();
