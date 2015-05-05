@@ -12,7 +12,7 @@
             <option value="8">8th-Level</option>
             <option value="9">9th-Level</option>
         </select>
-        <select multiple size="20" ng-model="spellClasses" ng-options="class as class for class in classes | orderBy">
+        <select multiple size="20" ng-model="spellClasses" ng-options="class as class for class in (classes | filter:showSubclasses | orderBy)">
         </select>
         <select multiple size="20" ng-model="spellSchools">
             <option value="Abjuration">Abjuration</option>
@@ -35,6 +35,13 @@
             Title: <input type="text" ng-model="pageTitle" ng-change="setTitle()">
             <div style="float: right">
                 Permalink: <input ng-value="generateUrl()" style="width: 200px;">
+            </div>
+            <hr>
+        </div>
+        <div style="padding: 5px 17px 0px 15px; text-align: center">
+            <div style="float: left">
+                <label><input type="radio" ng-model="classRestrict" value="1"> Exact class match</label>
+                <label><input type="radio" ng-model="classRestrict" value="0"> Additive class match</label>
             </div>
             <hr>
         </div>

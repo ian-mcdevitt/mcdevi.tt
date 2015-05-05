@@ -58,6 +58,9 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 }
             });
         });
+        $scope.showSubclasses = function(spellClass) {
+            return !(+$scope.classRestrict && spellClass.indexOf('(') !== -1);
+        };
         $scope.filterSpellSelect = function(spell) {
             return $scope.matchesLevels(spell) && $scope.matchesClasses(spell) && $scope.matchesSchools(spell) && $scope.matchesRitual(spell);
         };
@@ -65,10 +68,10 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             return $scope.matchesLevels(spell) && $scope.matchesClasses(spell) && $scope.matchesSchools(spell) && $scope.matchesRitual(spell) && $scope.matchesSelected(spell);
         };
         $scope.matchesLevels = function(spell) {
-            if ($scope.spellLevels.length === 0) {
+            if($scope.spellLevels.length === 0) {
                 return true;
             }
-            for (var i = 0; i < $scope.spellLevels.length; i++) {
+            for(var i = 0; i < $scope.spellLevels.length; i++) {
                 if (spell.level === +$scope.spellLevels[i]) {
                     return true;
                 }
@@ -76,15 +79,15 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             return false;
         };
         $scope.matchesClasses = function(spell) {
-            if ($scope.spellClasses.length === 0) {
+            if($scope.spellClasses.length === 0) {
                 return true;
             }
-            for (var i = 0; i < $scope.spellClasses.length; i++) {
-                for (var j = 0; j < spell.classes.length; j++) {
-                    if (spell.classes[j] === $scope.spellClasses[i]) {
-                        return true;
-                    }
-                }
+            var intersection = _.intersection(spell.classes, $scope.spellClasses);
+            // No class restrictions
+            if(($scope.classRestrict == '0' && intersection.length > 0) ||
+               // Matches spells that belong to every class selected and none others
+               ($scope.classRestrict == '1' && $scope.spellClasses.length === spell.classes.length && $scope.spellClasses.length === intersection.length)) {
+                return true;
             }
             return false;
         };
