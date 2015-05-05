@@ -4,8 +4,9 @@ Source code for the www.mcdevi.tt domain name server, which uses node/express to
 
 System was designed for ease of adding subdomains. Current subdomains are:
 
-* dnd.mcdevi.tt - tools used by Ian McDevitt's D&D group.
+* dnd.mcdevi.tt - tools used by Ian McDevitt's D&D group (Zarilian Sagas).
 * gerhat.mcdevi.tt - Wedding website for the upcoming Gerhat-McDevitt wedding
+* chelsea.mcdevi.tt - Solely exists as a redirect for chelsealynphotography.com
 
 Planned subdomains:
 
