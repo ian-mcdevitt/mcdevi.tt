@@ -14,7 +14,6 @@ angular.module('wedding.controllers.rsvp', []).controller('rsvpCtrl', ['$scope',
                 $scope.invitation.sunday = !!$scope.invitation.sunday
             })
             .error(function(error) {
-                console.log(error)
                 $location.path('/');
             });
         }, 100);
