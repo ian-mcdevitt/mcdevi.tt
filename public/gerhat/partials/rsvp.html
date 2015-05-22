@@ -35,7 +35,7 @@
             </tr>
             <tr ng-repeat="guest in invitation.guests">
                 <td ng-if="guest.isGuest">
-                    Guest Name: <input type="text" ng-model="guest.name">
+                    Guest: <input type="text" ng-model="guest.name">
                 </td>
                 <td ng-if="!guest.isGuest">{{guest.name}}</td>
                 <td><input type="radio" ng-model="guest.attending" value="1"></td>
