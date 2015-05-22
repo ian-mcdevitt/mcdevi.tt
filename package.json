@@ -10,6 +10,7 @@
     "morgan": "^1.0.0",
     "knex": "~0.7.3",
     "mysql": "~2.5.4",
-    "express-session": "~1.10.3"
+    "express-session": "~1.10.3",
+    "underscore": "~1.8.3"
   }
 }
