@@ -7,6 +7,12 @@ var router = express.Router();
 var weddingController = require('./controller')();
 
 router.get(
+    '/rsvp',
+    function(req, res) {
+        res.send(401);
+    }
+);
+router.get(
     '/rsvp/:password',
     weddingController.showrsvp
 );

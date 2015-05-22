@@ -9,8 +9,12 @@ angular.module('wedding.controllers.rsvp', []).controller('rsvpCtrl', ['$scope',
             .success(function(results) {
                 if(results.length === 0) $location.path('/');
                 $scope.invitation = results;
+                $scope.invitation.friday = !!$scope.invitation.friday
+                $scope.invitation.saturday = !!$scope.invitation.saturday
+                $scope.invitation.sunday = !!$scope.invitation.sunday
             })
-            .error(function() {
+            .error(function(error) {
+                console.log(error)
                 $location.path('/');
             });
         }, 100);
@@ -18,7 +22,8 @@ angular.module('wedding.controllers.rsvp', []).controller('rsvpCtrl', ['$scope',
         $scope.submit = function() {
             $http.post('/rsvp/' + password, $scope.invitation)
             .success(function(results) {
-                console.log(results);
+                alert('Thanks for RSVPing!');
+                $location.path('/');
             })
         };
     }

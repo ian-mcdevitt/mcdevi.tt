@@ -63,6 +63,7 @@ a {
 .detailbox {
     width: 60%;
     max-width: 1000px;
+    min-width: 700px;
     background-color: aqua;
     margin: 0 auto;
     border-radius: 10px;
