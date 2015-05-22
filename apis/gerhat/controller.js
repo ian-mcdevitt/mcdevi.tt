@@ -1,5 +1,6 @@
 var dbconfig = require('./database.json');
 var knex = require('knex')(dbconfig[process.env.NODE_ENV || 'development'].knex);
+var _ = require('underscore');
 
 exports = module.exports = function( ) {
 
@@ -19,8 +20,14 @@ exports = module.exports = function( ) {
         });
     }
 
+    function updatersvp(req, res, next) {
+        console.log(req.body, req.params);
+        res.send(200);
+    }
+
     return {
-        showrsvp: showrsvp
+        showrsvp: showrsvp,
+        updatersvp: updatersvp
     };
 };
 

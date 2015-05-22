@@ -41,5 +41,44 @@
                 </td>
             </tr>
         </table>
+        <hr>
+        <h3>Accomodations</h3>
+        <div class="accomodations">
+            <div>
+                <label>
+                    <input type="radio" ng-model="invitation.accomodations" value="group_rates">
+                    We will be staying in Cape May. Let us know if you can get group rates.
+                </label>
+            </div>
+            <div class="nights" ng-show="invitation.accomodations == 'group_rates'">
+                Which nights will you be staying?
+                <label>
+                    <input type="checkbox" ng-model="invitation.friday">
+                    Friday
+                </label>
+                <label>
+                    <input type="checkbox" ng-model="invitation.saturday">
+                    Saturday
+                </label>
+                <label>
+                    <input type="checkbox" ng-model="invitation.sunday">
+                    Sunday
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" ng-model="invitation.accomodations" value="own_accomodations">
+                    We will be staying in Cape May, but we have our own accommodations.
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" ng-model="invitation.accomodations" value="same_day">
+                    We will be driving down and back same day.
+                </label>
+            </div>
+        </div>
+        <hr>
+        <button ng-click="submit()">Submit</button>
     </div>
 </div>

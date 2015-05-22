@@ -11,4 +11,9 @@ router.get(
     weddingController.showrsvp
 );
 
+router.post(
+    '/rsvp/:password',
+    weddingController.updatersvp
+)
+
 module.exports = router;
