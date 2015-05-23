@@ -24,6 +24,9 @@ angular.module('wedding.controllers.rsvp', []).controller('rsvpCtrl', ['$scope',
                 alert('Thanks for RSVPing!');
                 $location.path('/');
             })
+            .error(function(error) {
+                alert('An error occurred. Please alert the webmaster (Ian).');
+            })
         };
     }
 

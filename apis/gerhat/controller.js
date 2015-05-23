@@ -7,7 +7,6 @@ exports = module.exports = function( ) {
 
     function showrsvp(req, res, next) {
         knex('invitations').where('password', req.params.password).limit(1).then(function(invitation) {
-            console.log(invitation)
             if(invitation.length === 0) {
                 return res.send(401);
             }
@@ -26,7 +25,8 @@ exports = module.exports = function( ) {
         var guests = req.body.guests;
         var invitation = _.omit(req.body, 'guests');
         knex('invitations').update(_.pick(invitation, 'accomodations', 'friday', 'saturday', 'sunday')).where('password', req.params.password).limit(1).then(function(result) {
-            console.log('invitation done', result);
+            if(!result) return res.send(401);
+
             q.all(_.map(guests, function(guest) {
                 return knex('guests').update(guest).where('id', guest.id);
             })).then(function(result) {
