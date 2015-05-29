@@ -16,6 +16,11 @@ router.get(
 router.post(
     '/rsvp/:password',
     weddingController.updatersvp
-)
+);
+
+router.post(
+    '/contributions',
+    weddingController.saveContribution
+);
 
 module.exports = router;
