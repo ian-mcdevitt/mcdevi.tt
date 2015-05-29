@@ -78,6 +78,11 @@ a {
     line-height: 32px;
     overflow: hidden;
 }
+.detailbox.map {
+    overflow-x: visible;
+    height: 200px;
+    position: relative;
+}
 .detailbox.whitebox {
     background-color: white !important;
 }
