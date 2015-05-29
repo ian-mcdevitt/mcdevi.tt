@@ -18,6 +18,11 @@ router.post(
     weddingController.updatersvp
 );
 
+router.get(
+    '/contributions',
+    weddingController.getContributions
+);
+
 router.post(
     '/contributions',
     weddingController.saveContribution

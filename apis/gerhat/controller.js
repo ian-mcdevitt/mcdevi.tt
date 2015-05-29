@@ -38,8 +38,15 @@ exports = module.exports = function( ) {
         })
     }
 
+    function getContributions(req, res, next) {
+        knex.select('*').from('contributions')
+        .then(function(result) {
+            res.send(200, result);
+        });
+    }
+
     function saveContribution(req, res, next) {
-        knex('contributions').insert(_.pick(req.body, 'contribution'))
+        knex('contributions').insert(_.pick(req.body, 'name', 'contribution'))
         .then(function(result) {
             if(!result) return res.send(500);
             return res.send(200);
@@ -49,6 +56,7 @@ exports = module.exports = function( ) {
     return {
         showrsvp: showrsvp,
         updatersvp: updatersvp,
+        getContributions: getContributions,
         saveContribution: saveContribution
     };
 };

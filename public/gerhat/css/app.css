@@ -4,11 +4,8 @@ body {
     margin: 0px;
 }
 body * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Handlee', sans-serif;
     color: #222;
-}
-hr.half {
-    width: 50%;
 }
 div.menubox {
     height: 40px;
@@ -17,9 +14,15 @@ div.menubox {
     background-color: white;
     position: relative;
 }
+div.menubox a {
+    font-family: 'Roboto', sans-serif;
+}
+hr.half {
+    width: 50%;
+}
 div.menubox > div {
     position: absolute;
-    bottom: -7px;
+    bottom: -13px;
     width: 100%;
     text-align: center;
     background-repeat: no-repeat;
@@ -71,7 +74,7 @@ a {
     margin-bottom: 50px;
     opacity: 0.8;
     box-shadow: 0px 10px 20px #444;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 32px;
     overflow: hidden;
 }
@@ -100,8 +103,9 @@ a {
   padding-right: 30px;
   padding-top: 30px;
 }
-table.rsvp {
+table {
     width: 100%;
+    border-collapse: collapse;
 }
 .rsvp th, .rsvp td {
     text-align: center;
@@ -130,4 +134,18 @@ textarea {
 }
 ol, ul {
     text-align: left;
+}
+.text-left {
+    text-align: left;
+}
+table.contributions td {
+    border-top: 1px solid #333;
+    padding: 5px 0px;
+}
+table.contributions th, table.contributions td {
+    text-align: center;
+}
+table.contributions th:first-child, table.contributions td:first-child {
+    border-right: 1px solid #333;
+    width: 20%;
 }
