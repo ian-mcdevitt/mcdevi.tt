@@ -24,7 +24,7 @@ exports = module.exports = function( ) {
     function updatersvp(req, res, next) {
         var guests = req.body.guests;
         var invitation = _.omit(req.body, 'guests');
-        knex('invitations').update(_.pick(invitation, 'accomodations', 'friday', 'saturday', 'sunday')).where('password', req.params.password).limit(1).then(function(result) {
+        knex('invitations').update(_.pick(invitation, 'accomodations', 'friday', 'saturday', 'sunday', 'comments')).where('password', req.params.password).limit(1).then(function(result) {
             if(!result) return res.send(401);
 
             q.all(_.map(guests, function(guest) {
