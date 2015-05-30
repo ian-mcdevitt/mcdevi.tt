@@ -3,6 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
     'ngRoute',
+    'wedding.controllers.nav',
     'wedding.controllers.rsvp',
     'wedding.controllers.contributions',
     'wedding.directives',

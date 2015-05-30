@@ -11,16 +11,16 @@
     </head>
     <body>
         <div class="menubox">
-            <div>
-                <a href="#/">Home</a>
+            <div ng-controller="navCtrl">
+                <a href="#/" ng-class="{ active: isActive('/') }">Home</a>
                 <span class="heart">&#10084;</span>
-                <a href="#/ceremony">Ceremony</a>
+                <a href="#/ceremony" ng-class="{ active: isActive('/ceremony/') }">Ceremony</a>
                 <span class="heart">&#10084;</span>
-                <a href="#/reception">Reception</a>
+                <a href="#/reception" ng-class="{ active: isActive('/reception/') }">Reception</a>
                 <span class="heart">&#10084;</span>
-                <a href="#/rsvp">RSVP</a>
+                <a href="#/rsvp" ng-class="{ active: isActive('/rsvp/') }">RSVP</a>
                 <span class="heart">&#10084;</span>
-                <a href="#/contributions">Contributions</a>
+                <a href="#/contributions" ng-class="{ active: isActive('/contributions/') }">Contributions</a>
                 <span class="heart">&#10084;</span>
                 <a href="http://chelsea.mcdevi.tt/gallery.php?g=Steph%2BIan" target="_blank">Gallery</a>
             </div>
@@ -33,6 +33,7 @@
         <script src="public/js/app.js"></script>
             <script src="public/js/controllers/contributionsCtrl.js"></script>
             <script src="public/js/controllers/rsvpCtrl.js"></script>
+            <script src="public/js/controllers/navCtrl.js"></script>
         <script src="public/js/directives.js"></script>
         <script src="public/js/filters.js"></script>
     </body>

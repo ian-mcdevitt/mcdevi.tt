@@ -1,4 +1,10 @@
 /* app css stylesheet */
+html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 body {
 	overflow-y: scroll;
     margin: 0px;
@@ -9,38 +15,31 @@ body * {
 }
 div.menubox {
     height: 40px;
-    margin-bottom: 1px;
     text-align: center;
     background-color: white;
     position: relative;
 }
-div.menubox a {
+div.menubox > div {
+    height: 28px;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+}
+div.menubox > div > * {
     font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0px 2px;
+    color: aqua;
+}
+div.menubox > div > a.active {
+    color: #FF9538;
 }
 hr.half {
     width: 50%;
-}
-div.menubox > div {
-    position: absolute;
-    bottom: -13px;
-    width: 100%;
-    text-align: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-clip: initial;
-    background-size: 100% 150%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
-    font-size: 30px;
-    font-weight: bold;
-}
-div.menubox > div > a {
-    text-transform: uppercase;
-    display: inline;
-    padding: 0px 5px;
-    color: white;
 }
 .homebox {
     width: 550px;
@@ -64,7 +63,7 @@ a {
     text-decoration: none;
 }
 .detailbox {
-    width: 60%;
+    width: 30%;
     max-width: 1000px;
     min-width: 700px;
     background-color: aqua;
@@ -77,7 +76,7 @@ a {
     font-size: 18px;
     line-height: 32px;
     overflow: hidden;
-}
+}z
 .detailbox.map {
     overflow-x: visible;
     height: 200px;
