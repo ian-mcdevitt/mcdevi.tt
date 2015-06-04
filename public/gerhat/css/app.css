@@ -20,7 +20,7 @@ div.menubox {
     position: relative;
 }
 div.menubox > div {
-    height: 28px;
+    height: 37px;
     width: 100%;
     text-align: center;
     font-size: 30px;
@@ -29,7 +29,8 @@ div.menubox > div {
     bottom: 0;
 }
 div.menubox > div > * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Handlee', sans-serif;
+    font-size: 0.85em;
     text-transform: uppercase;
     display: inline-block;
     padding: 0px 2px;
