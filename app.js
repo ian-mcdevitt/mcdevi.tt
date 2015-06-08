@@ -19,7 +19,6 @@ var apis = [
 
 var app = module.exports = express();
 
-
 /**
  * Configuration
  */

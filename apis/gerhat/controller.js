@@ -2,6 +2,15 @@ var dbconfig = require('./database.json');
 var knex = require('knex')(dbconfig[process.env.NODE_ENV || 'development'].knex);
 var _ = require('underscore');
 var q = require('q');
+var nodemailer = require('nodemailer');
+
+var mailer = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
 exports = module.exports = function( ) {
 
@@ -29,13 +38,22 @@ exports = module.exports = function( ) {
         knex('invitations').update(_.pick(invitation, 'accomodations', 'friday', 'saturday', 'sunday', 'comments')).where('password', req.params.password).limit(1)
         .then(function(result) {
             if(!result) return res.send(401);
-
             q.all(_.map(guests, function(guest) {
                 return knex('guests').update(guest).where('id', guest.id);
             })).then(function(result) {
+                mailer.sendMail(rsvpMessage(req.body));
                 return res.send(200);
             });
         })
+    }
+
+    function rsvpMessage(invitation) {
+        return {
+            from:    'gerhat@mcdevi.tt',
+            to:      'ian@mcdevi.tt, stephanie.gerhat@gmail.com',
+            subject: invitation.name + ' just RSVP\'d!',
+            html:    '<pre>' + JSON.stringify(invitation) + '</pre>'
+        };
     }
 
     function getContributions(req, res, next) {
