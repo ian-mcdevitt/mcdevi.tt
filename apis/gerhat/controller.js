@@ -41,25 +41,37 @@ exports = module.exports = function( ) {
             q.all(_.map(guests, function(guest) {
                 return knex('guests').update(guest).where('id', guest.id);
             })).then(function(result) {
-                mailer.sendMail(rsvpMessage(req.body));
+                mailer.sendMail(rsvpEmail(req.body));
                 return res.send(200);
             });
         })
     }
 
-    function rsvpMessage(invitation) {
+    function getContributions(req, res, next) {
+        knex.select('*').from('contributions')
+        .then(function(result) {
+            res.send(200, result);
+        });
+    }
+
+    function saveContribution(req, res, next) {
+        knex('contributions').insert(_.pick(req.body, 'name', 'contribution'))
+        .then(function(result) {
+            if(!result) return res.send(500);
+            mailer.sendMail(contributionEmail(req.body));
+            return res.send(200);
+        });
+    }
+
+    function rsvpEmail(invitation) {
         var accomodations = {
             'group_rates': 'Would like help with group rates',
             'own_accomodations': 'Will be securing own accomodations',
             'same_day': 'Will be traveling same day'
-        }
-        var email = {
-            from:    'gerhat@mcdevi.tt',
-            to:      'ian@mcdevi.tt, stephanie.gerhat@gmail.com',
-            subject: invitation.name + ' just RSVP\'d!',
-            html:    invitation.name + ' just RSVP\'d!'
         };
-        email.html += '<p><b>Accomodations:</b> ' + accomodations[invitation.accomodations] + '</p>';
+        var email = baseEmail();
+        email.subject = invitation.name + ' just RSVP\'d!';
+        email.html = invitation.name + ' just RSVP\'d!<p><b>Accomodations:</b> ' + accomodations[invitation.accomodations] + '</p>';
         if(invitation.accomodations == 'group_rates') {
             email.html += ''
                 + '<p><b>Staying Friday night?</b> ' + (invitation.friday ? 'Yes' : 'No') + '</p>'
@@ -76,19 +88,18 @@ exports = module.exports = function( ) {
         return email;
     }
 
-    function getContributions(req, res, next) {
-        knex.select('*').from('contributions')
-        .then(function(result) {
-            res.send(200, result);
-        });
+    function contributionEmail(contribution) {
+        var email = baseEmail();
+        email.subject = contribution.name + ' just offered to contribute!'
+        email.html = contribution.name + ' just offered to contribute!<p><b>Their message:</b> ' + contribution.contribution + '</b></p>';
+        return email;
     }
 
-    function saveContribution(req, res, next) {
-        knex('contributions').insert(_.pick(req.body, 'name', 'contribution'))
-        .then(function(result) {
-            if(!result) return res.send(500);
-            return res.send(200);
-        });
+    function baseEmail() {
+        return {
+            from:    'gerhat@mcdevi.tt',
+            to:      'ian@mcdevi.tt, stephanie.gerhat@gmail.com',
+        };
     }
 
     return {
