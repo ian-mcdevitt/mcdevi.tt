@@ -48,12 +48,32 @@ exports = module.exports = function( ) {
     }
 
     function rsvpMessage(invitation) {
-        return {
+        var accomodations = {
+            'group_rates': 'Would like help with group rates',
+            'own_accomodations': 'Will be securing own accomodations',
+            'same_day': 'Will be traveling same day'
+        }
+        var email = {
             from:    'gerhat@mcdevi.tt',
             to:      'ian@mcdevi.tt, stephanie.gerhat@gmail.com',
             subject: invitation.name + ' just RSVP\'d!',
-            html:    '<pre>' + JSON.stringify(invitation) + '</pre>'
+            html:    invitation.name + ' just RSVP\'d!'
         };
+        email.html += '<p><b>Accomodations:</b> ' + accomodations[invitation.accomodations] + '</p>';
+        if(invitation.accomodations == 'group_rates') {
+            email.html += ''
+                + '<p><b>Staying Friday night?</b> ' + (invitation.friday ? 'Yes' : 'No') + '</p>'
+                + '<p><b>Staying Saturday night?</b> ' + (invitation.saturday ? 'Yes' : 'No') + '</p>'
+                + '<p><b>Staying Sunday night?</b> ' + (invitation.sunday ? 'Yes' : 'No') + '</p>';
+
+        }
+        invitation.guests.forEach(function(guest) {
+            email.html += '<hr><p><b>' + guest.name + '</b> is ' + (guest.attending ? '' : 'not ') + 'attending' + (guest.attending ? ' and requests the ' + guest.entree : '') + '.</p>';
+        });
+        if( invitation.comments ) {
+            email.html += '<hr><p><b>Comments:</b> ' + invitation.comments + '</p>';
+        }
+        return email;
     }
 
     function getContributions(req, res, next) {
