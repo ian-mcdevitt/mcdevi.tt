@@ -80,7 +80,15 @@ exports = module.exports = function( ) {
 
         }
         invitation.guests.forEach(function(guest) {
-            email.html += '<hr><p><b>' + guest.name + '</b> is ' + (guest.attending ? '' : 'not ') + 'attending' + (guest.attending ? ' and requests the ' + guest.entree : '') + '.</p>';
+            var attendance;
+            if(guest.attending == null) {
+                attendance = 'has not specified if they are'
+            } else if(guest.attending) {
+                attendance = 'is'
+            } else {
+                attendance = 'is not'
+            }
+            email.html += '<hr><p><b>' + guest.name + '</b> ' + attendance + ' attending' + (guest.attending ? ' and requests the ' + guest.entree : '') + '.</p>';
         });
         if( invitation.comments ) {
             email.html += '<hr><p><b>Comments:</b> ' + invitation.comments + '</p>';
