@@ -1,0 +1,18 @@
+{
+    "development": {
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "root",
+        "database": "ian",
+        "multipleStatements": true,
+        "driver": "mysql",
+    },
+    "production": {
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "root",
+        "database": "ian",
+        "multipleStatements": true,
+        "driver": "mysql",
+    }
+}

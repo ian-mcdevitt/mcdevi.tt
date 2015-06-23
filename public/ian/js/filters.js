@@ -2,6 +2,6 @@
 
 /* filters */
 
-angular.module('wedding.filters', [])
+angular.module('ian.filters', [])
     //.filter('filtername', function() {
     //});
