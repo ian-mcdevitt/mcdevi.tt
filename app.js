@@ -25,7 +25,7 @@ var app = module.exports = express();
  */
 
 // Sessions
-app.use(session({ secret: 'OOGA BOOGA WHAT THE FUCK', cookie: {maxAge: 1000 * 60 * 60 * 24 * 30 }}));
+app.use(session({ secret: 'oFdZVFwCMsRlNKXbrZr4PC7XZI1QRHRbXcFFMLmu', cookie: {maxAge: 1000 * 60 * 60 * 24 * 30 }}));
 
 // all environments
 app.set('port', process.env.PORT || 80);
