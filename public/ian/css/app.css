@@ -1,156 +1,85 @@
 /* app css stylesheet */
+@font-face {
+    font-family: Hermit;
+    src: url("Hermit-medium.otf") format("opentype");
+}
 html {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
-body {
-	overflow-y: scroll;
+hr {
+    clear: both !important;
+    opacity: 0 !important;
+    height: 0px;
+    padding: 0px;
+    border: 0px;
     margin: 0px;
-}
-body * {
-    font-family: 'Handlee', sans-serif;
-    color: #222;
-}
-div.menubox {
-    height: 40px;
-    text-align: center;
-    background-color: white;
-    position: relative;
-}
-div.menubox > div {
-    height: 37px;
-    width: 100%;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    position: absolute;
-    bottom: 0;
-}
-div.menubox > div > * {
-    font-family: 'Handlee', sans-serif;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    display: inline-block;
-    padding: 0px 2px;
-    color: aqua;
-}
-div.menubox > div > a.active {
-    color: #FF9538;
 }
 hr.half {
     width: 50%;
 }
-.homebox {
-    width: 550px;
-    background-color: white;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 100px;
-    opacity: 0.7;
+body {
+	overflow-y: scroll;
+    margin: 0px;
+    background: #EEE;
 }
-.homebox:nth-child(1) p {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.2em;
+body * {
+    font-family: 'Hermit', Consolas, monaco, sans-serif;
+    color: #333;
 }
-.homebox:nth-child(2) p {
-    font-size: 1em;
-    line-height: 1.6em;
+div.menubox {
+    height: 84px;
 }
-a {
-    color: #222;
+#namebar {
+    float: left;
+    padding-left: 10px;
+    list-style: none;
+}
+#namebar #name {
+    margin: 0px;
+    font-size: 35px;
+    line-height: 52px;
+}
+#namebar #subtitle {
+    margin: 0px;
+    font-size: 21px;
+    line-height: 32px;
+}
+#navbar {
+    margin: 0px;
+    padding-right: 10px;
+    list-style: none;
+    float: right;
+    font-size: 18px;
+    height: 84px;
+    line-height: 84px;
+}
+#navbar > li {
+    display: inline;
+    padding-right: 10px;
+}
+#navbar > li > a {
     text-decoration: none;
 }
-.detailbox {
-    width: 30%;
-    max-width: 1000px;
-    min-width: 700px;
-    background-color: aqua;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding: 20px 35px;
-    margin-bottom: 50px;
-    opacity: 0.8;
-    box-shadow: 0px 10px 20px #444;
-    font-size: 18px;
-    line-height: 32px;
-    overflow: hidden;
-}z
-.detailbox.map {
-    overflow-x: visible;
-    height: 200px;
-    position: relative;
-}
-.detailbox.whitebox {
-    background-color: white !important;
-}
-.detailbox:nth-child(even) {
-    background-color: #FF9538;
-}
-.detailbox:nth-child(1) {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2em;
-    background-color: white;
-    opacity: 0.85;
-    margin-top: 50px;
-}
-.detailbox:before,
-.detailbox:after {
-  content:"";
-  display:table;
-  clear:both;
-}
-.detailbox .left {
-  float: right;
-  width: calc(100% - 232px);
-  padding-right: 30px;
-  padding-top: 30px;
-}
-table {
+.section {
     width: 100%;
-    border-collapse: collapse;
-}
-.rsvp th, .rsvp td {
-    text-align: center;
-}
-.rsvp th:first-child, .rsvp td:first-child {
+    border-bottom: 1px solid #333;
     text-align: left;
+    padding: 10px;
+    height: 100px;
 }
-.tooltip {
-    cursor: help;
+.section:first-child {
+    background-color: #AAA;
 }
-button {
-    margin-top: 10px;
-    border-radius: 5px;
-    font-size: 16pt;
+.section:nth-child(odd) {
+    text-align: right;
 }
-.accomodations {
-    text-align: left;
+.subsection {
+    width: 70%;
+    float: left;
 }
-.accomodations .nights {
-    margin-left: 10%;
-}
-textarea {
-    padding: 5px;
-    width: 100%;
-    height: 10em;
-}
-ol, ul {
-    text-align: left;
-}
-.text-left {
-    text-align: left;
-}
-table.contributions td {
-    border-top: 1px solid #333;
-    padding: 5px 0px;
-}
-table.contributions th, table.contributions td {
-    text-align: center;
-}
-table.contributions th:first-child, table.contributions td:first-child {
-    border-right: 1px solid #333;
-    width: 20%;
+.section:nth-child(odd) .subsection {
+    float: right;
 }

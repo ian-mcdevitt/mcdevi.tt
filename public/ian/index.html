@@ -1,15 +1,26 @@
 <!-- DOCTYPE HTML -->
-<html ng-app="myApp">
+<html ng-app="ian">
     <head
         <meta charset="utf-8">
         <title>Ian McDevitt | Web Development</title>
         <link rel="stylesheet" href="public/css/app.css"/>
+        <link href='public/css/Hermit-medium.otf' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div class="menubox">
-            <ul class="menu">
-                <!--<li><a href="#/pagename">Page Name</a></li>-->
+            <a href="/">
+                <div id="namebar">
+                    <div id="name">ian mcdevitt</div>
+                    <div id="subtitle">software development</div>
+                </div>
+            </a>
+            <ul id="navbar">
+                <li><a href="about">About</a></li>
+                <li><a href="projects">Projects</a></li>
+                <li><a href="blog">Blog</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
+            <hr>
         </div>
         <div ng-view></div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
