@@ -23,6 +23,11 @@ router.get(
     weddingController.getContributions
 );
 
+router.get(
+    '/stats',
+    weddingController.getStats
+);
+
 router.post(
     '/contributions',
     weddingController.saveContribution

@@ -63,6 +63,49 @@ exports = module.exports = function( ) {
         });
     }
 
+    function getStats(req, res, next) {
+        var friday = 0;
+        var saturday = 0;
+        var sunday = 0;
+        var food = {
+            beef: 0,
+            chicken: 0,
+            seafood: 0
+        };
+        knex.select('*').from('invitations')
+        .then(function(results) {
+            var string = '              Name              |   Friday   |  Saturday  |   Sunday   ' + '\n';
+            results.forEach(function(invitation) {
+                if(invitation.id == 999) return;
+                friday += +invitation.friday;
+                saturday += +invitation.saturday;
+                sunday += +invitation.sunday;
+                string += padLength(invitation.name, 32) + '|' + (invitation.friday ? '      Y     ' : '            ') + '|' + (invitation.saturday ? '      Y     ' : '            ') + '|' + (invitation.sunday ? '      Y     ' : '            ') + '\n';
+            });
+            string += '\n\nTotals:';
+            string += '\nFriday: ' + friday;
+            string += '\nSaturday: ' + saturday;
+            string += '\nSunday: ' + sunday;
+            knex.select('*').from('guests')
+            .then(function(results) {
+                results.forEach(function(guest) {
+                    if(guest.entree) {
+                        food[guest.entree]++;
+                    }
+                });
+                string += '\n';
+                string += '\nBeef: ' + food.beef;
+                string += '\nChicken: ' + food.chicken;
+                string += '\nSeafood: ' + food.seafood;
+                res.send(string);
+            });
+        });
+    }
+
+    function padLength(string, targetLength) {
+        return (string + Array(targetLength).join(' ')).substring(0, targetLength);
+    }
+
     function rsvpEmail(invitation) {
         var accomodations = {
             'group_rates': 'Would like help with group rates',
@@ -114,7 +157,8 @@ exports = module.exports = function( ) {
         showrsvp: showrsvp,
         updatersvp: updatersvp,
         getContributions: getContributions,
-        saveContribution: saveContribution
+        saveContribution: saveContribution,
+        getStats: getStats
     };
 };
 
