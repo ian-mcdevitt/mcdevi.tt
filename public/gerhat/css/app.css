@@ -8,10 +8,10 @@ html {
 body {
 	overflow-y: scroll;
     margin: 0px;
+    color: #222;
 }
 body * {
     font-family: 'Handlee', sans-serif;
-    color: #222;
 }
 div.menubox {
     height: 40px;
@@ -59,7 +59,7 @@ hr.half {
     font-size: 1em;
     line-height: 1.6em;
 }
-a {
+a:not(.obvious) {
     color: #222;
     text-decoration: none;
 }
@@ -85,6 +85,9 @@ a {
 }
 .detailbox.whitebox {
     background-color: white !important;
+}
+.detailbox.whitebox.high-opacity {
+    opacity: 0.95;
 }
 .detailbox:nth-child(even) {
     background-color: #FF9538;

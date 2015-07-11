@@ -14,6 +14,7 @@ angular.module('myApp', [
     $routeProvider.when('/reception/', {templateUrl: 'public/partials/reception.html'});
     $routeProvider.when('/rsvp/', {templateUrl: 'public/partials/rsvp.html', controller: 'rsvpCtrl'});
     $routeProvider.when('/contributions/', {templateUrl: 'public/partials/contributions.html', controller: 'contributionsCtrl'});
+    $routeProvider.when('/accomodations/', {templateUrl: 'public/partials/accomodations.html'});
     $routeProvider.otherwise({templateUrl: 'public/partials/home.html'});
     $httpProvider.defaults.useXDomain = true;
 }]);
