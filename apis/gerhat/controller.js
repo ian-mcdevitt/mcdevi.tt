@@ -74,13 +74,13 @@ exports = module.exports = function( ) {
         };
         knex.select('*').from('invitations')
         .then(function(results) {
-            var string = '              Name              |   Friday   |  Saturday  |   Sunday   ' + '\n';
+            var string = '              Name              |    RSVP    |   Friday   |  Saturday  |   Sunday   ' + '\n';
             results.forEach(function(invitation) {
                 if(invitation.id == 999) return;
                 friday += +invitation.friday;
                 saturday += +invitation.saturday;
                 sunday += +invitation.sunday;
-                string += padLength(invitation.name, 32) + '|' + (invitation.friday ? '      Y     ' : '            ') + '|' + (invitation.saturday ? '      Y     ' : '            ') + '|' + (invitation.sunday ? '      Y     ' : '            ') + '\n';
+                string += padLength(invitation.name, 32) + '|' + (invitation.friday !== null ? '      Y     ' : '            ') + '|' + (invitation.friday ? '      Y     ' : '            ') + '|' + (invitation.saturday ? '      Y     ' : '            ') + '|' + (invitation.sunday ? '      Y     ' : '            ') + '\n';
             });
             string += '\n\nTotals:';
             string += '\nFriday: ' + friday;
