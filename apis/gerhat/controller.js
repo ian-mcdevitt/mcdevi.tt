@@ -126,7 +126,7 @@ exports = module.exports = function( ) {
             var attendance;
             if(guest.attending == null) {
                 attendance = 'has not specified if they are'
-            } else if(guest.attending) {
+            } else if(guest.attending == "1") {
                 attendance = 'is'
             } else {
                 attendance = 'is not'
