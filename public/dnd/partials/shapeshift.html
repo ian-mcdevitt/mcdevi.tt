@@ -94,11 +94,11 @@
 				<div>{{beast.dpr | number:1}}</div>
 				<div style="width: 12px; cursor: pointer;" ng-click="select_creature($index);">&#x25BC;</div>
 			</div>
-			<stat-block ng-show="selected_creature !== null">
-					<div ng-show="selected_creature !== null" ng-click="deselect_creature()" style="margin-top: -3px; margin-bottom: 3px; float: right; cursor: pointer;">
-						<div style="float: left;">&#x25C0;</div>
-						<div style="float: left; margin: 1px 0px 0px 5px">Back</div>
-					</div>
+			<stat-block class="stat-block" ng-show="selected_creature !== null">
+				<div ng-show="selected_creature !== null" ng-click="deselect_creature()" style="margin-top: -3px; margin-bottom: 3px; float: right; cursor: pointer;">
+					<div style="float: left;">&#x25C0;</div>
+					<div style="float: left; margin: 1px 0px 0px 5px">Back</div>
+				</div>
     			<creature-heading>
       				<h1>{{beast.name}}</h1>
       				<h2>{{sizes[beast.size]}} {{beast.type}}, {{beast.alignment}}</h2>
@@ -178,6 +178,11 @@
 				<property-block ng-repeat="action in beast.actions" ng-show="beast.actions.length > 0">
 	      			<h4>{{action.name}}.</h4>
       				<p ng-bind-html="action.text"></p>
+    			</property-block>
+				<h3 ng-show="beast.reactions.length > 0">Reactions</h3>
+				<property-block ng-repeat="reaction in beast.reactions" ng-show="beast.reactions.length > 0">
+	      			<h4>{{reaction.name}}.</h4>
+      				<p ng-bind-html="reaction.text"></p>
     			</property-block>
     			</div>
 			</stat-block>

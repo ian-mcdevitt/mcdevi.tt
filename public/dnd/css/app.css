@@ -229,3 +229,7 @@ th, td {
     width: 50px;
     text-align: center;
 }
+.stat-block ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
