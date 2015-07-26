@@ -12,6 +12,50 @@ angular.module('dnd5e.controllers.shapeshift', ['ngSanitize']).controller('shape
         $http.get('/creatures?password=' + password)
         .success(function(beasts) {
             $scope.beasts = beasts.map(function(beast) { return JSON.parse(beast.data); });
+            $scope.beasts.push({
+                name: 'Eldritch Knight',
+                size: 1,
+                cr: 4,
+                ac: 18,
+                hp: 52,
+                speed: 30,
+                swim: 0,
+                flight: 0,
+                type: 'humanoid',
+                alignment: 'any',
+                armor_class: '18 (plate)',
+                hit_points: '52 (8d8+16)',
+                speeds: '30 ft.',
+                abilities: [16, 11, 14, 16, 11, 15],
+                senses: [],
+                perception_prof: 0,
+                languages: ['any one language (usually Common)'],
+                challenge: '4 (1100 XP)',
+                properties: [{
+                    name: 'Brave',
+                    text: 'The eldritch knight has advantage on saving throws against being frightened.'
+                }, {
+                    name: 'Spellcasting',
+                    text: 'The eldritch knight is a 3rd-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). The eldritch knight knows the following wizard spells:<ul><li>Cantrips (at will): Ray of Frost, Light</li><li>1st Level (4 slots): Expeditious Retreat, Feather Fall, Magic Missile, Shield</li><li>2nd Level (2 slots): Mirror Image, Shatter</li></ul>'
+                }],
+                actions: [{
+                    name: 'Multiattack',
+                    text: 'The eldritch knight makes two melee attacks.'
+                }, {
+                    name: 'Greatsword',
+                    text: '<i>Melee Weapon Attack:</i> +5 to hit, reach 5 ft., one target. <i>Hit:</i> 10 (2d6+3) slashing damage.'
+                }, {
+                    name: 'Heavy Crossbow',
+                    text: '<i>Ranged Weapon Attack:</i> +2 to hit, range 100/400 ft., one target. <i>Hit:</i> 5 (1d10) piercing damage.'
+                }, {
+                    name: 'Leadership (Recharges after a Short or Long Rest)',
+                    text: 'For 1 minute, the eldritch knight can utter a special command or warning whenever a nonhostile creature that it can see within 30 feet of it makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand the eldritch knight. A creature can benefit from only one Leadership die at a time. This effect ends if the eldritch knight is incapacitated.'
+                }],
+                reactions: [{
+                    name: 'Parry',
+                    text: 'The eldritch knight adds 2 to its AC against one melee attack that would hit it. To do so, the eldritch knight must see the attacker and be wielding a melee weapon.'
+                }]
+            });
             $scope.min_cr = 0;
             $scope.max_cr = 6;
             $scope.swim = '2';
