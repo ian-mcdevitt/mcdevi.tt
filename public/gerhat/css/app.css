@@ -157,3 +157,7 @@ table.contributions th:first-child, table.contributions td:first-child {
     border-right: 1px solid #333;
     width: 20%;
 }
+#countdown {
+    font-size: 1.6em;
+    margin-top: 80px;
+}

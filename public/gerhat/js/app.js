@@ -3,6 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
     'ngRoute',
+    'wedding.controllers.home',
     'wedding.controllers.nav',
     'wedding.controllers.rsvp',
     'wedding.controllers.contributions',
@@ -15,6 +16,6 @@ angular.module('myApp', [
     $routeProvider.when('/rsvp/', {templateUrl: 'public/partials/rsvp.html', controller: 'rsvpCtrl'});
     $routeProvider.when('/contributions/', {templateUrl: 'public/partials/contributions.html', controller: 'contributionsCtrl'});
     $routeProvider.when('/accomodations/', {templateUrl: 'public/partials/accomodations.html'});
-    $routeProvider.otherwise({templateUrl: 'public/partials/home.html'});
+    $routeProvider.otherwise({templateUrl: 'public/partials/home.html', controller: 'homeCtrl'});
     $httpProvider.defaults.useXDomain = true;
 }]);
