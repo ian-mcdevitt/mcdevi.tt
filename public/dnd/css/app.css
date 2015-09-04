@@ -120,7 +120,7 @@ div.menubox {
 .spell select {
     width: 150px;
 	margin: 0px 10px;
-	overflow-y: hidden;
+	overflow-y: scroll;
 	padding: 5px;
 	margin: 0px 10px;
 }
