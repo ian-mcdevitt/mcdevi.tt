@@ -23,6 +23,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 $scope.classes = [];
                 $scope.schools = [];
                 $scope.ritual = 2;
+                $scope.classRestrict = 0;
                 for (var i = 0; i < $scope.spells.length; i++) {
                     $scope.spells[i].classes.forEach(function(class_to_add) {
                         for (var j = 0; j < $scope.classes.length; j++) {
