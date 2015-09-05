@@ -9,7 +9,6 @@ var express        = require('express'),
     session        = require('express-session'),
     morgan         = require('morgan'),
     http           = require('http'),
-    proxy          = require('express-http-proxy'),
     path           = require('path');
 
 var apis = [
