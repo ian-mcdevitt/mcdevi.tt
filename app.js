@@ -2,14 +2,15 @@
  * Module dependencies
  */
 
-var express = require('express'),
-    bodyParser = require('body-parser'),
+var express        = require('express'),
+    bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
-    errorHandler = require('errorhandler'),
-    session = require('express-session'),
-    morgan = require('morgan'),
-    http = require('http'),
-    path = require('path');
+    errorHandler   = require('errorhandler'),
+    session        = require('express-session'),
+    morgan         = require('morgan'),
+    http           = require('http'),
+    proxy          = require('express-http-proxy'),
+    path           = require('path');
 
 var apis = [
     'ian',
