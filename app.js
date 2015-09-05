@@ -9,11 +9,13 @@ var express        = require('express'),
     session        = require('express-session'),
     morgan         = require('morgan'),
     http           = require('http'),
-    path           = require('path');
+    path           = require('path'),
+    fs             = require('fs');
 
 var apis = [
     'ian',
     'dnd',
+    'wiki',
     'gerhat',
     'chelsea'
 ];
@@ -77,9 +79,15 @@ apis.forEach(function(api) {
 });
 
 // Serve domain-specific index (views/:api/index.jade)
-app.get('/:api/', function(req, res) {
-    // TODO: Check to see if index actually exists, next() if not
-    res.sendfile('public/' + req.params.api.replace('.', '') + '/index.html');
+app.get('/:api/', function(req, res, next) {
+    var filepath = 'public/' + req.params.api.replace('.', '') + '/index.html';
+    fs.stat(filepath, function(err, stat) {
+        if(err == null) {
+            return res.sendfile(filepath);
+        } else {
+            next();
+        }
+    });
 });
 
 app.get('/:api/public/vendor/*', function(req, res) {
@@ -93,6 +101,7 @@ app.get('/:api/public/*', function(req, res) {
 app.get('/:api/*', function(req, res) {
     res.redirect((req.socket.encrypted ? 'https' : 'http') + '://' + req.headers.host);
 });
+
 
 /**
  * Start Server
