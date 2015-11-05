@@ -113,7 +113,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 return true;
             }
             for (var i = 0; i < $scope.spellsSelected.length; i++) {
-                if (spell.id === $scope.spellsSelected[i]) {
+                if (spell.name === $scope.spellsSelected[i]) {
                     return true;
                 }
             }
