@@ -24,7 +24,7 @@
             <option value="Necromancy">Necromancy</option>
             <option value="Transmutation">Transmutation</option>
         </select>
-        <select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.id as spell.name group by (spell.level + ordinalEnding(spell.level) + ' Level') for spell in (spells | filter:filterSpellSelect) | orderBy: ['level', 'name']">
+        <select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.name as spell.name group by (spell.level + ordinalEnding(spell.level) + ' Level') for spell in (spells | filter:filterSpellSelect) | orderBy: ['level', 'name']">
         </select>
         <div style="padding: 5px 17px 0px 15px; text-align: center">
             <div style="float: left">
