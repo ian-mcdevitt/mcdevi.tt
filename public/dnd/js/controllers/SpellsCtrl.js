@@ -53,9 +53,10 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                     if ($routeParams.levels && $routeParams.levels !== 'a') $scope.spellLevels = $routeParams.levels.split(',');
                     if ($routeParams.classes && $routeParams.classes !== 'b') $scope.spellClasses = $routeParams.classes.split(',');
                     if ($routeParams.schools && $routeParams.schools !== 'c') $scope.spellSchools = $routeParams.schools.split(',');
-                    if ($routeParams.selected && $routeParams.selected !== 'd') $scope.spellsSelected = $routeParams.selected.split(',');
+                    if ($routeParams.selected && $routeParams.selected !== 'd') $scope.spellsSelected = $routeParams.selected.split(',').map(Number);
                     if ($routeParams.title && $routeParams.title !== 'e') $scope.pageTitle = $routeParams.title;
                     $scope.setTitle();
+                    window.scope = $scope;
                 }
             });
         });
@@ -113,7 +114,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 return true;
             }
             for (var i = 0; i < $scope.spellsSelected.length; i++) {
-                if (spell.name === $scope.spellsSelected[i]) {
+                if (spell.id === $scope.spellsSelected[i]) {
                     return true;
                 }
             }
