@@ -233,3 +233,15 @@ th, td {
     list-style-type: none;
     padding-left: 0px;
 }
+#teleport_locations td
+{
+	text-align: center;
+}
+#teleport_locations .location
+{
+	text-align: left;
+}
+#teleport_locations th, #teleport_locations td
+{
+	padding: 1px 4px;
+}
