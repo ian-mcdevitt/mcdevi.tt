@@ -14,6 +14,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 for (var i = 0; i < $scope.spells.length; i++) {
                     if (typeof $scope.spells[i].description == 'string') {
                         $scope.spells[i].description = $sce.trustAsHtml(nl2br($scope.spells[i].description));
+                        $scope.spells[i].at_higher_levels = $sce.trustAsHtml(nl2br($scope.spells[i].at_higher_levels));
                     }
                     if (typeof $scope.spells[i].classes == 'string') {
                         $scope.spells[i].classes = $scope.spells[i].classes.split(', ');
@@ -146,7 +147,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
 
         function nl2br(input) {
             var lines = input.split('\n');
-            return lines.join('<br />');
+            return lines.join('\n<br />');
         }
     }
 ]);
