@@ -71,7 +71,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             return $scope.matchesLevels(spell) && $scope.matchesClasses(spell) && $scope.matchesSchools(spell) && $scope.matchesRitual(spell) && $scope.matchesSelected(spell);
         };
         $scope.matchesLevels = function(spell) {
-            if($scope.spellLevels.length === 0) {
+            if(!$scope.spellLevels || $scope.spellLevels.length === 0) {
                 return true;
             }
             for(var i = 0; i < $scope.spellLevels.length; i++) {
@@ -146,6 +146,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
         };
 
         function nl2br(input) {
+            input = input || '';
             var lines = input.split('\n');
             return lines.join('\n<br />');
         }
