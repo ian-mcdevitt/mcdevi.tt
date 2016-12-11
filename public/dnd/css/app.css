@@ -237,10 +237,6 @@ th, td {
 {
     text-align: center;
 }
-#teleport_locations td.location, #animate_objects td.size
-{
-    text-align: left;
-}
 #teleport_locations th, #teleport_locations td, #animate_objects th, #animate_objects td
 {
     padding: 1px 4px;
