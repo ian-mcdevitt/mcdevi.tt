@@ -75,7 +75,7 @@ app.use(function(req, res, next) {
  */
 
 apis.forEach(function(api) {
-    app.use(`/${api}/`, require(`./apis/${api}/routes`));
+    app.use('/' + api + '/', require('./apis/' + api + '/routes'));
 });
 
 // Serve domain-specific index (views/:api/index.jade)
