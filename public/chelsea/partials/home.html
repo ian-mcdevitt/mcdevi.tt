@@ -1,8 +1,17 @@
+<div class="slider centeringWrapper">
+    <div ng-repeat="slide in coverSlides" class="slide slide-animation" ng-hide="!isCurrentSlideIndex($index)" ng-style="{'background-image':'url({{slide.image}})'}" /></div>
+    <div class="next-previous-buttons">
+        <div class="arrow prev" ng-click="prevSlide()"></div>
+        <div class="arrow next" ng-click="nextSlide()"></div>
+    </div>
+
+</div>
+
 <div class="centeringWrapper">
-    <ul class="modal-thumbnails">
+    <ul class="modal-thumbnails inline-list">
         <li ng-repeat="image in images | limitTo:4">
             <a ng-click="openLightboxModal($index)">
-                <div ng-style="{'background':'url({{image.thumbUrl}}) 50% 50% no-repeat', 'width': '250px', 'height': '250px', 'background-size': 'cover'}"></div>
+                <div ng-style="{'background-image':'url({{image.thumbUrl}})'}"></div>
             </a>
         </li>
     </ul>

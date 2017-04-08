@@ -79,7 +79,7 @@ div.menubox {
 div.centeringWrapper {
     text-align: center;
 }
-ul.modal-thumbnails {
+ul.inline-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -87,12 +87,70 @@ ul.modal-thumbnails {
     display: inline-block;
     text-align: center;
 }
-ul.modal-thumbnails li {
-    margin: 16px;
+ul.inline-list li {
+    margin: 32px 16px;
     float: left;
 }
 ul.modal-thumbnails li a {
     display: block;
     text-align: center;
     text-decoration: none;
+}
+ul.modal-thumbnails li a div {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.slider {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+.slide {
+    width: 100%;
+    height: 320px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.arrow {
+    z-index: 1002;
+    display: inline-block;
+    position: absolute;
+    top: 240px;
+    width: 36px;
+    height: 71px;
+    outline: none;
+    cursor: pointer;
+    background: url(../vendor/img/blank.gif) no-repeat;
+}
+
+.arrow.prev {
+    margin-left: -75px;
+    margin-right: 75px;
+    opacity: 0.5;
+    background-image: url(../vendor/img/paddle_prev_999.png);
+    transition: 0.2s linear all;
+}
+
+.arrow.next {
+    margin-left: 35px;
+    margin-right: -75px;
+    opacity: 0.5;
+    background-image: url(../vendor/img/paddle_next_999.png);
+    transition: 0.2s linear all;
+}
+
+.arrow.prev:hover {
+    opacity: 1;
+    background-image: url(../vendor/img/paddle_prev_fff.png);
+}
+
+.arrow.next:hover {
+    opacity: 1;
+    background-image: url(../vendor/img/paddle_next_fff.png);
 }
