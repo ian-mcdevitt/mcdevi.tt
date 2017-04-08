@@ -1,4 +1,7 @@
 /* app css stylesheet */
+body * {
+    font-family: Open Sans; 
+}
 html {
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -97,8 +100,8 @@ ul.modal-thumbnails li a {
     text-decoration: none;
 }
 ul.modal-thumbnails li a div {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -153,4 +156,10 @@ ul.modal-thumbnails li a div {
 .arrow.next:hover {
     opacity: 1;
     background-image: url(../vendor/img/paddle_next_fff.png);
+}
+h2 {
+    font-weight: 900;
+}
+h3 {
+    font-weight: 500;
 }
