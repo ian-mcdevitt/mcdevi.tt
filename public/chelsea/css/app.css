@@ -1,0 +1,78 @@
+/* app css stylesheet */
+html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+hr {
+    clear: both !important;
+    opacity: 0 !important;
+    height: 0px;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+}
+hr.half {
+    width: 50%;
+}
+body {
+	overflow-y: scroll;
+    margin: 0px;
+    background: #EEE;
+}
+body * {
+    color: #333;
+}
+div.menubox {
+    height: 84px;
+    border-bottom: 1px solid #333;
+}
+#namebar {
+    float: left;
+    padding-left: 10px;
+    list-style: none;
+}
+#namebar #name {
+    margin: 0px;
+    font-size: 35px;
+    line-height: 52px;
+}
+#namebar #subtitle {
+    margin: 0px;
+    font-size: 21px;
+    line-height: 32px;
+}
+#navbar {
+    margin: 0px;
+    padding-right: 10px;
+    list-style: none;
+    float: right;
+    font-size: 18px;
+    height: 84px;
+    line-height: 84px;
+}
+#navbar > li {
+    display: inline;
+    padding-right: 10px;
+}
+#navbar > li > a {
+    text-decoration: none;
+}
+.section {
+    width: 99%;
+    border-bottom: 1px solid #333;
+    text-align: left;
+    padding: 10px;
+    height: 100px;
+}
+.section:nth-child(odd) {
+    text-align: right;
+}
+.subsection {
+    width: 70%;
+    float: left;
+}
+.section:nth-child(odd) .subsection {
+    float: right;
+}
