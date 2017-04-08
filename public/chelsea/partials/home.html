@@ -1,6 +1,9 @@
-<div class="section" ng-repeat="section in [1]">
-    <div class="subsection">
-        Site is currently in progress. Please be patient.
-    </div>
-    <hr>
+<div class="centeringWrapper">
+    <ul class="modal-thumbnails">
+        <li ng-repeat="image in images | limitTo:4">
+            <a ng-click="openLightboxModal($index)">
+                <div ng-style="{'background':'url({{image.thumbUrl}}) 50% 50% no-repeat', 'width': '250px', 'height': '250px', 'background-size': 'cover'}"></div>
+            </a>
+        </li>
+    </ul>
 </div>

@@ -76,3 +76,23 @@ div.menubox {
 .section:nth-child(odd) .subsection {
     float: right;
 }
+div.centeringWrapper {
+    text-align: center;
+}
+ul.modal-thumbnails {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+}
+ul.modal-thumbnails li {
+    margin: 16px;
+    float: left;
+}
+ul.modal-thumbnails li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
