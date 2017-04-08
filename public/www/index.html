@@ -1,0 +1,35 @@
+<!-- DOCTYPE HTML -->
+<html ng-app="ian">
+    <head
+        <meta charset="utf-8">
+        <title>Ian McDevitt | Web Development</title>
+        <link rel="stylesheet" href="public/css/app.css"/>
+        <link href='public/css/Hermit-medium.otf' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="menubox">
+            <a href="/">
+                <div id="namebar">
+                    <div id="name">ian mcdevitt</div>
+                    <div id="subtitle">software development</div>
+                </div>
+            </a>
+            <ul id="navbar">
+                <li><a href="/">About</a></li>
+                <li><a href="projects">Projects</a></li>
+                <li><a href="blog">Blog</a></li>
+                <li><a href="contact">Contact</a></li>
+            </ul>
+            <hr>
+        </div>
+        <div ng-view></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+        <script src="http://underscorejs.org/underscore-min.js"></script>
+        <script src="public/vendor/js/angular-route.js"></script>
+        <script src="public/vendor/js/jquery-2.1.0.min.js"></script>
+        <script src="public/js/app.js"></script>
+            <!--<script src="public/js/controllers/pagenameCtrl.js"></script>-->
+        <script src="public/js/directives.js"></script>
+        <script src="public/js/filters.js"></script>
+    </body>
+</html>
