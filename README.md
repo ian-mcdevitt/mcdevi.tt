@@ -6,7 +6,7 @@ System was designed for ease of adding subdomains. Current subdomains are:
 
 * dnd.mcdevi.tt - tools used by Ian McDevitt's D&D group (Zarilian Sagas).
 * gerhat.mcdevi.tt - Wedding website for the upcoming Gerhat-McDevitt wedding
-* chelsea.mcdevi.tt - Solely exists as a redirect for chelsealynphotography.com
+* chelsea.mcdevi.tt - Chelsea McDevitt's photography website
 
 Planned subdomains:
 
