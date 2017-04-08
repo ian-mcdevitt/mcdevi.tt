@@ -1,6 +1,31 @@
 'use strict';
 /* Controllers */
-angular.module('chelsea.controllers.home', ['bootstrapLightbox']).controller('homeCtrl', function($scope, Lightbox) {
+angular.module('chelsea.controllers.home', ['bootstrapLightbox', 'ngAnimate']).controller('homeCtrl', function($scope, Lightbox) {
+    $scope.coverSlides = [
+        { image: 'public/img/cover/CLM_5062.jpg' },
+        { image: 'public/img/cover/CLM_6487.jpg' },
+        { image: 'public/img/cover/CLM_7843.jpg' },
+        { image: 'public/img/cover/_MG_7872.jpg' },
+        { image: 'public/img/cover/MT414.jpg'    },
+        { image: 'public/img/cover/SMeng175.jpg' }
+    ];
+
+    $scope.currentIndex = 0;
+
+    $scope.setCurrentSlideIndex = function (index) {
+        $scope.currentIndex = index;
+    };
+    $scope.isCurrentSlideIndex = function (index) {
+        return $scope.currentIndex === index;
+    };
+
+    $scope.nextSlide = function () {
+        $scope.currentIndex = ($scope.currentIndex < $scope.coverSlides.length - 1) ? ++$scope.currentIndex : 0;
+    };
+    $scope.prevSlide = function () {
+        $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.coverSlides.length - 1;
+    };
+
     $scope.images = [
         {
             url: 'public/img/CLM_1907-Edit.jpg',
