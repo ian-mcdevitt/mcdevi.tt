@@ -64,6 +64,8 @@ app.use(function(req, res, next) {
     if (matches && matches.length === 2) {
         req.url = '/' + matches[1] + req.url;
         next();
+    } else if(req.headers.host.indexOf('chelsealynphotography.com') !== -1) {
+        return res.redirect('http://chelsea.mcdevi.tt');
     } else {
         req.url = '/www' + req.url;
         next();
