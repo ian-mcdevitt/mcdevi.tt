@@ -46,7 +46,7 @@
             <hr>
         </div>
     </div>
-    <div ng-repeat="spell in spells | orderBy:['level','name']" ng-show="filterSpell(spell)" class="spell" ng-class="{elemental_evil: (spell.id > 361)}">
+    <div ng-repeat="spell in spells | orderBy:['level','name']" ng-show="filterSpell(spell)" class="spell {{spell.source}}">
         <h1>{{spell.name}}</h1>
         <div class="bold italic">{{spell.level}}{{ordinalEnding(spell.level)}} Level {{spell.school}}</div>
         <div><span class="bold">Action:</span> {{spell.action}}</div>
