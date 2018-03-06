@@ -47,7 +47,7 @@
         </div>
     </div>
     <div ng-repeat="spell in spells | orderBy:['level','name']" ng-show="filterSpell(spell)" class="spell {{spell.source}}">
-        <h1>{{spell.name}}</h1>
+        <h1>{{spell.name}}{{spell.ritual ? ' (Ritual)' : ''}}</h1>
         <div class="bold italic">{{spell.level}}{{ordinalEnding(spell.level)}} Level {{spell.school}}</div>
         <div><span class="bold">Action:</span> {{spell.action}}</div>
         <div><span class="bold">Range:</span> {{spell.range}}</div>
