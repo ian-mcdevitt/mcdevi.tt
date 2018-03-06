@@ -24,7 +24,7 @@
             <option value="Necromancy">Necromancy</option>
             <option value="Transmutation">Transmutation</option>
         </select>
-        <select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.id as (spell.name + (spell.ritual ? ' (Ritual)' : '')) group by (spell.level + ordinalEnding(spell.level) + ' Level') for spell in (spells | filter:filterSpellSelect) | orderBy: ['level', 'name']">
+        <select style="width: 243px" multiple size="20" ng-model="spellsSelected" ng-options="spell.id as (spell.name + (spell.ritual ? ' (Ritual)' : '')) group by (spellLevel(spell, false)) for spell in (spells | filter:filterSpellSelect) | orderBy: ['level', 'name']">
         </select>
         <div style="padding: 5px 17px 0px 15px; text-align: center">
             <div style="float: left">
@@ -48,7 +48,7 @@
     </div>
     <div ng-repeat="spell in spells | orderBy:['level','name']" ng-show="filterSpell(spell)" class="spell {{spell.source}}">
         <h1>{{spell.name}}{{spell.ritual ? ' (Ritual)' : ''}}</h1>
-        <div class="bold italic">{{spell.level}}{{ordinalEnding(spell.level)}} Level {{spell.school}}</div>
+        <div class="bold italic">{{spellLevel(spell, true)}}</div>
         <div><span class="bold">Action:</span> {{spell.action}}</div>
         <div><span class="bold">Range:</span> {{spell.range}}</div>
         <div><span class="bold">Components:</span> {{spell.components}}</div>

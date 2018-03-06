@@ -121,6 +121,14 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             }
             return false;
         };
+        $scope.spellLevel = function(spell, school) {
+            if(spell.level === 0) {
+                return school ? school + 'Cantrip' : 'Cantrip'
+            } else {
+                return `${spell.level}${ordinalEnding(spell.level)} Level ${spell.school}`
+            }
+            
+        }
         $scope.ordinalEnding = function(i) {
             if (i % 10 == 1 && i % 100 != 11) {
                 return 'st';
