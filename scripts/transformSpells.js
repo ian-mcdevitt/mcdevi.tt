@@ -1,6 +1,5 @@
 // WHERE I GOT THESE SPELLS: https://lithdoran.github.io/fiveetools/spells.html
 const { spells, teleport } = require('./spells.js')
-const fs = require('fs')
 
 function transformSchool (school) {
     switch (school) {
@@ -137,6 +136,7 @@ function transformSpells (spells) {
             range: transformRange(spell.range).trim(),
             components: transformComponents(spell.components),
             duration: transformDuration(spell.duration),
+            concentration: spell.duration[0] && spell.duration[0].concentration === true ? 'TRUE' : 'FALSE',
             classes: transformClasses(spell.classes),
             description: transformDescription(spell.entries),
             at_higher_levels: transformHigherLevel(spell.entriesHigherLevel),
@@ -146,16 +146,10 @@ function transformSpells (spells) {
         if (spell.name === 'Teleport') {
             obj.description = teleport
         }
-        inserts.push(`INSERT INTO spells (name, school, level, \`action\`, \`range\`, components, duration, classes, description, at_higher_levels, ritual, source) VALUES ("${obj.name}", "${obj.school}", "${obj.level}", "${obj.action}", "${obj.range}", "${obj.components}", "${obj.duration}", "${obj.classes}", "${obj.description}", ${obj.at_higher_levels}, ${obj.ritual}, "${obj.source}");`)
+        inserts.push(`INSERT INTO spells (name, school, level, \`action\`, \`range\`, components, duration, concentration, classes, description, at_higher_levels, ritual, source) VALUES ("${obj.name}", "${obj.school}", "${obj.level}", "${obj.action}", "${obj.range}", "${obj.components}", "${obj.duration}", ${obj.concentration}, "${obj.classes}", "${obj.description}", ${obj.at_higher_levels}, ${obj.ritual}, "${obj.source}");`)
     }
     inserts.push('DELETE from spells where name LIKE \'%(UA)%\';')
     return inserts
 }
 
-fs.writeFile("./all-spells.sql", transformSpells(spells).join('\n'), function(err) {
-    if(err) {
-        return console.log(err);
-    }
-
-    console.log("The file was saved!");
-}); 
+console.log(transformSpells(spells).join('\n'))
