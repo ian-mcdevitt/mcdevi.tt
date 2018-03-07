@@ -125,7 +125,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
             if(spell.level === 0) {
                 return school ? spell.school + ' Cantrip' : 'Cantrip'
             } else {
-                return `${spell.level}${ordinalEnding(spell.level)} Level ${spell.school}`
+                return `${spell.level}${$scope.ordinalEnding(spell.level)} Level ${spell.school}`
             }
         }
         $scope.ordinalEnding = function(i) {
