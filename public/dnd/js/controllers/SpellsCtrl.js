@@ -128,6 +128,14 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 return `${spell.level}${$scope.ordinalEnding(spell.level)} Level ${spell.school}`
             }
         }
+        $scope.source = function(source) {
+            switch(source) {
+                case 'PHB': return "Player's Handbook";
+                case 'XGE': return "Xanathar's Guide to Everything"
+                case 'SCAG': return "Sword Coast Adventurer's Guide"
+                default: return '¯\\\_(ツ)_/¯'
+            }
+        }
         $scope.ordinalEnding = function(i) {
             if (i % 10 == 1 && i % 100 != 11) {
                 return 'st';

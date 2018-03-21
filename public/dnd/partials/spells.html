@@ -54,6 +54,7 @@
         <div><span class="bold">Components:</span> {{spell.components}}</div>
         <div><span class="bold">Duration:</span> {{spell.concentration ? 'Concentration, up to ' : ''}}{{spell.duration}}</div>
         <div><span class="bold">Classes:</span> {{spell.classes.sort().join(', ')}}</div>
+        <div><span class="bold">Source:</span> {{source(spell.source)}}</div>
         <div ng-bind-html="spell.description"></div>
         <div ng-show="spell.at_higher_levels">
             <strong>At Higher Levels.</strong>
