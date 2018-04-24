@@ -81,7 +81,7 @@ function transformClasses (classes) {
             // Disregard spells that belong to a subclass whose class already has that spell
             // Disregard spells from UA and PS documents
             if (output.indexOf(subclass.class.name) !== -1 || /^(UA)|(PS)/.test(subclass.subclass.source)) { continue; }
-            output.push(`${subclass.class.name} (${subclass.subclass.name})`)
+            output.push(`${subclass.class.name} (${subclass.subclass.subSubclass || subclass.subclass.name})`)
         }
     }
     output = output.sort()
@@ -125,7 +125,6 @@ function transformHigherLevel (entries) {
 }
 
 function transformSpells (spells) {
-    var id = 417;
     var inserts = ['TRUNCATE TABLE spells;']
     for(var spell of spells) {
         var obj = {
