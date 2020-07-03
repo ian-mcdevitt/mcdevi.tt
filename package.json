@@ -7,7 +7,7 @@
     "errorhandler": "^1.0.1",
     "express": "~4.1.1",
     "express-session": "~1.10.3",
-    "knex": "~0.7.3",
+    "knex": "~0.21.1",
     "method-override": "^1.0.0",
     "morgan": "^1.0.0",
     "mysql": "~2.5.4",
