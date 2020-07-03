@@ -133,6 +133,7 @@ angular.module('dnd5e.controllers.spells', []).controller('spellsCtrl', ['$scope
                 case 'PHB': return "Player's Handbook";
                 case 'XGE': return "Xanathar's Guide to Everything"
                 case 'SCAG': return "Sword Coast Adventurer's Guide"
+                case 'OotD': return "Odyssey of the Dragonlords"
                 default: return '¯\\\_(ツ)_/¯'
             }
         }
